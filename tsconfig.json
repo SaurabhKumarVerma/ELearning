@@ -1,0 +1,21 @@
+{
+"compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@eLearning/*": ["src/*"],
+      "@components/*": ["src/component/*"],
+      "@base/*": ["src/base/*"],
+      "@services/*": ["src/service/*"],
+      "@themes/*": ["src/theme/*"],
+      "@types/*": ["src/types/*"],
+      "@utils/*": ["src/utils/*"],
+      "@screens/*": ["src/screen/*"],
+      "@navigations/*": ["src/navigations/StackNavigation/*"],
+      "@store/*": ["src/store/*"],
+      "@navigationTypes/*": ["src/navigations/NavigationTypes/types.ts"],
+      "@navigation-taps/*": ["src/navigations/BottomNavigation/*"],
+      "@constant/*": ["src/constant/*"]
+    }
+  },
+  "extends": "expo/tsconfig.base"
+}

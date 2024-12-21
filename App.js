@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { ThemeProvider, useTheme } from '@rneui/themed';
+import { useColorScheme, View } from 'react-native';
+import Main from '@eLearning/Main';
+import { themeConfig } from '@eLearning/config/themeConfig';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-export default function App() {
+
+export default App = () => {
+  const [isReady, setIsReady] = useState(false);
+ const theme = useTheme()
+  const colorScheme = useColorScheme();
+  themeConfig.mode = colorScheme;
+
+  
+
+  React.useEffect(() => {
+    // loadAssetsAsync();
+  }, []);
+
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <ThemeProvider theme={themeConfig}>
+        <Main />
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};

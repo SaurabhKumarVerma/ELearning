@@ -14,7 +14,8 @@
       "@store/*": ["src/store/*"],
       "@navigationTypes/*": ["src/navigations/NavigationTypes/types.ts"],
       "@navigation-taps/*": ["src/navigations/BottomNavigation/*"],
-      "@constant/*": ["src/constant/*"]
+      "@constant/*": ["src/constant/*"],
+      "@config": ["src/config/*"]
     }
   },
   "extends": "expo/tsconfig.base"

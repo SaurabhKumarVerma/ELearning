@@ -38,5 +38,6 @@ export const color = {
     tealGreen:'#00967d',
     forestGreen: '#007864',
     darkForestGreen:'#005a4b',
-    hunterGreen:'#00463a'
+    hunterGreen:'#00463a',
+    grayishBlue: '#7598A5'
 }

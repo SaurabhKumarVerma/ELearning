@@ -4,6 +4,7 @@ import { useColorScheme, View } from 'react-native';
 import Main from '@eLearning/Main';
 import { themeConfig } from '@eLearning/config/themeConfig';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 export default App = () => {
@@ -22,9 +23,11 @@ export default App = () => {
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
+      <SafeAreaProvider>
       <ThemeProvider theme={themeConfig}>
         <Main />
       </ThemeProvider>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 };

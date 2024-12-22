@@ -11,7 +11,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningText from "@eLearning/base/ELearningText/ELearningText";
 import { MODE } from "@eLearning/types/types";
 import ELearningTextInput from "@eLearning/base/ELearningTextInput/ELearningTextInput";
-import { useTheme } from "@rneui/themed";
 import { color } from "@eLearning/theme/color";
 import ELearningLoadingButton from "@eLearning/base/ELearningButton/ELearningButton";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -55,6 +54,7 @@ const Login = () => {
                 <ELearningTextInput
                     inputText={""}
                     placeholder="Enter email"
+                    inputProps={{inputMode: 'email', keyboardType: 'email-address'}}
                     onChangeText={(text: string) => { }}
                 />
 
@@ -80,7 +80,7 @@ const Login = () => {
                     <ELearningLoadingButton
                         isLoading={false}
                         handlePress={() => console.log("clec")}
-                        label="Sign Up"
+                        label="Sign In"
                         textPresets="medium"
                         textStyle={{ color: color.whisperWhite }}
                     />

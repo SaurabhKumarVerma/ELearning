@@ -59,11 +59,11 @@ export const Onboarding = () => {
                     <Paginator itemsLength={onboardingData.length} scrollX={scrollX} />
                 </View>
 
-                <CircularButton
+                {/* <CircularButton
                     screensLenght={onboardingData.length}
                     onPress={onPressButton}
                     index={index}
-                />
+                /> */}
             </View>
         </ScrollView>
     );

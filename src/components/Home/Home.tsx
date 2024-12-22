@@ -3,6 +3,7 @@ import React from 'react'
 import { useTheme, useThemeMode } from '@rneui/themed';
 import ELearningImage from '@eLearning/base/ELearningImage/ELearningImage';
 import { Onboarding } from '../Onborading/Onboarding';
+import GettingStarted from '../Getting-Started/GettingStarted';
 
 const Home = () => {
     const theme = useTheme()
@@ -11,7 +12,7 @@ const Home = () => {
     }
     
   return (
-    <><Onboarding /></>
+    <><GettingStarted /></>
   )
 }
 

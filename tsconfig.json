@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@eLearning/*": ["src/*"],
-      "@components/*": ["src/component/*"],
+      "@components/*": ["src/components/*"],
       "@base/*": ["src/base/*"],
       "@services/*": ["src/service/*"],
       "@themes/*": ["src/theme/*"],

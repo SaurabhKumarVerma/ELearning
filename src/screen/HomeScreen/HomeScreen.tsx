@@ -1,6 +1,6 @@
 import { View } from 'react-native'
 import React from 'react'
-import Home from '@eLearning/component/Home/Home'
+import Home from '@eLearning/components/Home/Home'
 import { useTheme, withTheme } from '@rneui/themed'
 
 const HomeScreen = () => {

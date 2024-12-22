@@ -12,7 +12,7 @@ const Home = () => {
     }
     
   return (
-    <Pressable onPress={toggleDarkMode}><Onboarding /></Pressable>
+    <Pressable onPress={toggleDarkMode}><GettingStarted /></Pressable>
   )
 }
 

@@ -8,7 +8,7 @@ export const themeConfig = createTheme({
   },
   darkColors: {
     primary: color.blackForestGreen,
-    background: color.blackForestGreen,
+    background: color.onyx,
   },
   mode: 'dark',
 });

@@ -5,3 +5,8 @@ export interface OnboardingData {
   text: string;
   description: string;
 }
+
+export enum MODE {
+  DARK = 'dark',
+  LIGHT = 'light'
+}

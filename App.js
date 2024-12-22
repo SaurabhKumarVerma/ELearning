@@ -52,14 +52,3 @@ const App = () => {
 
 
 export default App;
-
-// [
-//   ...vectorFonts,
-//   {},
-//   {},
-//   {},
-//   {},
-//   {},
-//   {},
-//   {},
-// ]

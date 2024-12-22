@@ -4,11 +4,12 @@ import { useTheme, useThemeMode } from '@rneui/themed';
 import ELearningImage from '@eLearning/base/ELearningImage/ELearningImage';
 import { Onboarding } from '../Onborading/Onboarding';
 import GettingStarted from '../Getting-Started/GettingStarted';
+import { MODE } from '@eLearning/types/types';
 
 const Home = () => {
     const theme = useTheme()
     const toggleDarkMode = () => {
-      Appearance.getColorScheme() === 'dark' ?  Appearance.setColorScheme('light') :    Appearance.setColorScheme('dark')
+      Appearance.getColorScheme() === MODE.DARK ?  Appearance.setColorScheme(MODE.LIGHT) :    Appearance.setColorScheme(MODE.DARK)
     }
     
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
-import { TextStyle } from 'react-native';
+import { StyleProp, TextStyle } from 'react-native';
 import { Text } from '@rneui/themed';
 
-type Preset =
+export type Preset =
     | 'heading'
     | 'subheading'
     | 'body'
@@ -19,7 +19,7 @@ interface IELearningText {
     preset?: Preset;
     size?: number;
     weight?: keyof typeof FONT_FAMILY_MAP;
-    style?: TextStyle;
+    style?: StyleProp<TextStyle>;
 }
 
 const FONT_FAMILY_MAP = {
@@ -90,7 +90,6 @@ const createPresets = () => {
         },
     };
 
-    // Dynamically generate presets for each weight
     Object.keys(FONT_FAMILY_MAP).forEach((key) => {
         const weightKey = key as keyof typeof FONT_FAMILY_MAP;
         const fontName = FONT_FAMILY_MAP[weightKey];
@@ -121,7 +120,7 @@ const ELearningText: React.FC<IELearningText> = ({
         ...presetStyle,
         fontSize: size ?? presetStyle.fontSize,
         fontFamily: weight ? FONT_FAMILY_MAP[weight] : presetStyle.fontFamily,
-        ...style,
+        ...(Array.isArray(style) ? Object.assign({}, ...style) : style),
     };
 
     return <Text style={combinedStyle}>{text}</Text>;

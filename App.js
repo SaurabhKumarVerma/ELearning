@@ -1,23 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ThemeProvider, useTheme } from '@rneui/themed';
 import { useColorScheme, View } from 'react-native';
 import Main from '@eLearning/Main';
 import { themeConfig } from '@eLearning/config/themeConfig';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 
+SplashScreen.preventAutoHideAsync();
 
-export default App = () => {
-  const [isReady, setIsReady] = useState(false);
- const theme = useTheme()
+const App = () => {
+  const [loaded, error] = useFonts({
+    'poppinsBlack': require('./assets/fonts/Poppins-Black.ttf'),
+    'poppinsBold': require('./assets/fonts/Poppins-Bold.ttf'),
+    'poppinsLight': require('./assets/fonts/Poppins-Light.ttf'),
+    'poppinsMedium': require('./assets/fonts/Poppins-Medium.ttf'),
+    'poppinsRegular': require('./assets/fonts/Poppins-Regular.ttf'),
+    'poppinsSemiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
+    'poppinsThin': require('./assets/fonts/Poppins-Thin.ttf')
+  });
   const colorScheme = useColorScheme();
   themeConfig.mode = colorScheme;
 
   
 
-  React.useEffect(() => {
-    // loadAssetsAsync();
-  }, []);
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
 
 
 
@@ -31,3 +47,17 @@ export default App = () => {
     </GestureHandlerRootView>
   );
 };
+
+
+export default App;
+
+// [
+//   ...vectorFonts,
+//   {},
+//   {},
+//   {},
+//   {},
+//   {},
+//   {},
+//   {},
+// ]

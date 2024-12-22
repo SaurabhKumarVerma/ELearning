@@ -3,6 +3,9 @@ import ELearningImage from "@eLearning/base/ELearningImage/ELearningImage";
 import { SCREEN_WIDTH } from "@eLearning/constant/constant";
 import { OnboardingData } from "@eLearning/types/types";
 import { color } from "@eLearning/theme/color";
+import ELearningText from "@eLearning/base/ELearningText/ELearningText";
+
+
 type Props = {
   screen: OnboardingData;
 };
@@ -14,10 +17,8 @@ const RenderItem = ({ screen }: Props) => {
       <ELearningImage
         imageData={{source: screen.imgSource, style:{width: width - 120, aspectRatio: 0.8} }}
       />
-      <Text style={styles.title}>{screen.text}</Text>
-      <Text style={[styles.description, { width: width - 30 }]}>
-        {screen.description}
-      </Text>
+      <ELearningText text={screen.text} style={styles.title} preset="heading"/>
+      <ELearningText text={screen.description} style={{ ...styles.description, width: width - 30 }} />
     </View>
   );
 };
@@ -31,9 +32,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    color: "#000000",
-    fontSize: 22,
-    fontWeight: "bold",
     marginTop: 50,
   },
   description: {
@@ -48,5 +46,3 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
-
-// export default RenderItem;

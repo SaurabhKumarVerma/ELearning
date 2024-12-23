@@ -33,7 +33,7 @@ const ExpertItem = ({
       <ELearningText
         text= {expertLevel}
         preset="regular"
-        size={14}
+        size={12}
         style={{
           color: color.lightGrayishBlue,
           textAlign: "center",

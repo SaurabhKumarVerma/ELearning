@@ -23,17 +23,17 @@ const Expert = () => {
       {
         expertLevel: EXPERT_TYPE.BEGINNER,
         ageRange: "10-16",
-        topPosition: 110,
+        topPosition:  0.15,
       },
       {
         expertLevel: EXPERT_TYPE.INTERMEDIATE,
         ageRange: "10-16",
-        topPosition: 62,
+        topPosition: 0.1,
       },
       {
         expertLevel: EXPERT_TYPE.EXPERT,
         ageRange: "25-36",
-        topPosition: 14,
+        topPosition: 0.05,
       },
     ];
 
@@ -46,7 +46,7 @@ const Expert = () => {
         iconWidth={SCREEN_WIDTH * 0.22}
         expertLevel={item.expertLevel}
         ageRange={item.ageRange}
-        style={[styles.expertItem, { top: item.topPosition, left: index * 20 }]}
+        style={[styles.expertItem, { top:  SCREEN_HEIGHT *  item.topPosition, left: index * 20 }]}
       />
     ));
   };

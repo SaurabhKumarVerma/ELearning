@@ -9,6 +9,8 @@ import ELearningTextInput from "@eLearning/base/ELearningTextInput/ELearningText
 import ELearningLoadingButton from "@eLearning/base/ELearningButton/ELearningButton";
 import { color } from "@eLearning/theme/color";
 import { AntDesign } from "@expo/vector-icons";
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const Signup = () => {
   const inset = useSafeAreaInsets();
@@ -18,6 +20,19 @@ const Signup = () => {
       ? Appearance.setColorScheme(MODE.LIGHT)
       : Appearance.setColorScheme(MODE.DARK);
   };
+
+  const  onGoogleButtonPress = async () => {
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    const signInResult = await GoogleSignin.signIn();
+    const idToken = signInResult?.idToken;
+    if (!idToken) {
+     console.log('No ID token found');
+    }
+    const googleCredential = auth.GoogleAuthProvider.credential(signInResult.data?.token);
+    return auth().signInWithCredential(googleCredential);
+  }
+
+
   return (
     <ScrollView style={{ flex: 1, top: inset.top, marginHorizontal: 18 }}>
       <View>
@@ -100,7 +115,7 @@ const Signup = () => {
                     }
                     buttonBackgroundColor={color.crimsonRed}
                     isLoading={false}
-                    handlePress={() => console.log("clec")}
+                    handlePress={onGoogleButtonPress}
                     label="Continue With Google"
                     textPresets="medium"
                     textStyle={{ color: color.whisperWhite }}

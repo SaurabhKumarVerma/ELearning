@@ -10,6 +10,11 @@ import * as SplashScreen from 'expo-splash-screen';
 import vectorFonts from '@eLearning/utils/vector-fonts';
 import { StatusBar } from 'expo-status-bar';
 import { MODE } from '@eLearning/types/types';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+
+GoogleSignin.configure({
+  webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
+});
 
 SplashScreen.preventAutoHideAsync();
 

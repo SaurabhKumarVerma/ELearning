@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -14,13 +14,15 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.saurabh7071.eLearning"
+      "bundleIdentifier": "com.saurabh7071.eLearning",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "googleServicesFile": "./google-services.json",
       "package": "com.saurabh7071.eLearning"
     },
     "web": {
@@ -29,12 +31,22 @@
     "plugins": [
       "expo-asset",
       "expo-font",
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
      [
       "expo-image-picker",
       {
         "photosPermission": "Allow $(PRODUCT_NAME) to access your photos",
         "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
       }
+     ],
+     [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
      ]
     ]
   }

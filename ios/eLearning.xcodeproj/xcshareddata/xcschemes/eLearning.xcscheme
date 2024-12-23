@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "eLearning.app"
-               BlueprintName = "eLearning"
-               ReferencedContainer = "container:eLearning.xcodeproj">
+               BuildableName = "ELearning.app"
+               BlueprintName = "ELearning"
+               ReferencedContainer = "container:ELearning.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "eLearningTests.xctest"
-               BlueprintName = "eLearningTests"
-               ReferencedContainer = "container:eLearning.xcodeproj">
+               BuildableName = "ELearningTests.xctest"
+               BlueprintName = "ELearningTests"
+               ReferencedContainer = "container:ELearning.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "eLearning.app"
-            BlueprintName = "eLearning"
-            ReferencedContainer = "container:eLearning.xcodeproj">
+            BuildableName = "ELearning.app"
+            BlueprintName = "ELearning"
+            ReferencedContainer = "container:ELearning.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "eLearning.app"
-            BlueprintName = "eLearning"
-            ReferencedContainer = "container:eLearning.xcodeproj">
+            BuildableName = "ELearning.app"
+            BlueprintName = "ELearning"
+            ReferencedContainer = "container:ELearning.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

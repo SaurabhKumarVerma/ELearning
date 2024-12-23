@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.34,
     shadowRadius: 4,
 
-    elevation: 8,
+    elevation: 0,
   },
   boxContainer: {
     flex: 1,

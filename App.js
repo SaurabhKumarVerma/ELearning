@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { ThemeProvider, useTheme } from '@rneui/themed';
-import { useColorScheme, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { ThemeProvider } from '@rneui/themed';
+import { useColorScheme } from 'react-native';
 import Main from '@eLearning/Main';
 import { themeConfig } from '@eLearning/config/themeConfig';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -8,6 +8,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import vectorFonts from '@eLearning/utils/vector-fonts';
+import { StatusBar } from 'expo-status-bar';
+import { MODE } from '@eLearning/types/types';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,7 +27,6 @@ const App = () => {
   const colorScheme = useColorScheme();
   themeConfig.mode = colorScheme;
 
-  
 
   useEffect(() => {
     if (loaded || error) {
@@ -41,7 +42,8 @@ const App = () => {
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
-      <SafeAreaProvider>
+      <StatusBar />
+      <SafeAreaProvider style={{ backgroundColor: (colorScheme === MODE.DARK ? themeConfig.darkColors.background :themeConfig.lightColors.background) }}>
       <ThemeProvider theme={themeConfig}>
         <Main />
       </ThemeProvider>

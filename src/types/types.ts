@@ -10,3 +10,9 @@ export enum MODE {
   DARK = 'dark',
   LIGHT = 'light'
 }
+
+export enum EXPERT_TYPE {
+  BEGINNER = 'Beginner',
+  INTERMEDIATE = 'Intermediate',
+  EXPERT = 'Expert'
+}

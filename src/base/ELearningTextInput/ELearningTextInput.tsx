@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   input: {
-    borderRadius: 28,
-    padding: 24,
+    borderRadius: 18,
+    padding: 16,
     marginBottom: 10,
     fontFamily: 'poppinsMedium',
     fontSize: 16,

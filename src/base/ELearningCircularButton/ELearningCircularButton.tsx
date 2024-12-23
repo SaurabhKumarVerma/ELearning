@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleProp, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
 import React from 'react'
 import ELearningText from '../ELearningText/ELearningText'
 import { useTheme } from '@rneui/themed';
@@ -9,13 +9,17 @@ import { MODE } from '@eLearning/types/types';
 interface IELearningCircularButton {
     onPress: () => void;
     text: string;
+    style?:StyleProp<ViewStyle>;
+    backgroundColor?: string;
+    textColor?: string;
 }
 const ELearningCircularButton = (props: IELearningCircularButton) => {
     const {theme} = useTheme()
-    const colorTheme = theme.mode === MODE.LIGHT ? color.darkForestGreen : color.forestGreen
+    const colorTheme = props.backgroundColor || ( theme.mode === MODE.LIGHT ? color.darkForestGreen : color.forestGreen)
+    const textColor = props.textColor || color.whisperWhite
     return (
-        <TouchableOpacity onPress={props.onPress} style={[styles.container, {backgroundColor: colorTheme}]}>
-            <ELearningText text={props.text} preset='medium' size={16} />
+        <TouchableOpacity onPress={props.onPress} style={[styles.container, props.style, {backgroundColor: colorTheme}]}>
+            <ELearningText text={props.text} preset='medium' size={16} style={{color: textColor}}/>
         </TouchableOpacity>
     )
 }

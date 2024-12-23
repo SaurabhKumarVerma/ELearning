@@ -41,5 +41,8 @@ export const color = {
     hunterGreen:'#00463a',
     grayishBlue: '#7598A5',
     whiteSmoke: '#F5F5F5',
-    crimsonRed: '#E34545'
+    crimsonRed: '#E34545',
+    cadetGray: '#E7EFF1',
+    lightGrayishBlue: '#99A9AD',
+    greenishBlue:'#04201B'
 }

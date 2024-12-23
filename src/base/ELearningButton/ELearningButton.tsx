@@ -74,14 +74,14 @@ const ELearningLoadingButton: React.FC<ILoadingButtonProps> = ({
 
 const styles = StyleSheet.create({
     button: {
-        paddingVertical: 20,
+        paddingVertical: 14,
         paddingHorizontal: 20,
-        borderRadius: 30,
+        borderRadius: 18,
         alignItems: "center",
         justifyContent: "center",
     },
     loadingButton: {
-        paddingVertical: 23,
+        paddingVertical: 16,
     },
     iconContainer: {
         marginRight: 16,

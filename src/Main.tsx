@@ -4,11 +4,12 @@ import HomeScreen from './screen/HomeScreen/HomeScreen'
 import { withTheme } from '@rneui/themed';
 import LoginScreen from './screen/LoginScreen/LoginScreen';
 import SignupScreen from './screen/SignupScreen/SignupScreen';
+import ExpertScreen from './screen/ExpertScreen/ExpertScreen';
 const Main = () => {
   return (
     <NavigationContainer
     >
-      <SignupScreen />
+      <ExpertScreen />
     </NavigationContainer>
   )
 }

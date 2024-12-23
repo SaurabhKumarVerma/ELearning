@@ -41,12 +41,13 @@ const Login = () => {
                     text="Join E-Learning Community"
                     preset="semiBold"
                     size={24}
+                    style={{ textAlign: "center" }}
                 />
                 <ELearningText
                     text="Subscribe quickly with us"
                     preset="regular"
                     size={16}
-                    style={{ marginTop: 8 }}
+                    style={{ marginTop: 8, textAlign: "center" }}
                 />
             </View>
 

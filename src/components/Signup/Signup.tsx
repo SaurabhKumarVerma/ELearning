@@ -41,8 +41,7 @@ const Signup = () => {
           text="Subscribe quickly with us"
           preset="regular"
           size={16}
-          style={{ marginTop: 8 }}
-          style={{ textAlign: "center" }}
+          style={{ marginTop: 8,  textAlign: "center"  }}
         />
       </View>
 

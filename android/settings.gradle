@@ -21,7 +21,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
   }
 }
 
-rootProject.name = 'eLearning'
+rootProject.name = 'E-Learning'
 
 dependencyResolutionManagement {
   versionCatalogs {

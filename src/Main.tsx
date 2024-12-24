@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <NavigationContainer
     >
-      <SignupScreen />
+      <RatingModal />
     </NavigationContainer>
   )
 }

@@ -41,14 +41,14 @@ const RatingModal = () => {
   }));
 
   const onValueChange = (value: number) => {
-    tempSliderValue.current = value;
-    sliderValue.value = value;
+    tempSliderValue.current = value.toPrecision(1);;
+    sliderValue.value = value.toPrecision(1);;
   };
 
-  const onSliderChange = useDebouncedCallback((value) => {
-    setRating(value.toFixed(1));
-    sliderValue.value = value;
-  }, 100);
+  const onSliderChange = (value:number) => {
+    setRating(value.toPrecision(1));
+    sliderValue.value = value.toPrecision(1);
+  }
 
 
   const toggleDarkMode = () => {
@@ -100,6 +100,7 @@ const RatingModal = () => {
             step={1}
             thumbTintColor={tintColor}
             minimumTrackTintColor={tintColor}
+            allowTouchTrack
             maximumTrackTintColor={trackTintColor}
             thumbStyle={{
               height: 20,

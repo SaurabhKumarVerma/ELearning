@@ -1,5 +1,5 @@
 import { Appearance, StyleSheet, Modal, View } from "react-native";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningText from "@eLearning/base/ELearningText/ELearningText";
 import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
@@ -20,7 +20,7 @@ const RatingModal = () => {
   const inset = useSafeAreaInsets();
   const { theme } = useTheme();
 
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState<number>(0);
   const emojiList = ["👿", "😕", "😐", "🙂", "😍"];
   const emojiTextList = [
     "Terrible",
@@ -30,17 +30,24 @@ const RatingModal = () => {
     "Amazing",
   ];
   const sliderValue = useSharedValue(0);
+  const tempSliderValue = useRef(0); 
+  
 
   const animatedEmojiIndex = useDerivedValue(() => {
     return Math.round(sliderValue.value * (emojiList.length - 1));
   });
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: withSpring(1 + sliderValue.value / 5) }],
+    transform: [{ scale: withSpring(1 + sliderValue.value / 3, { damping: 10, mass: 10 }) }],
   }));
 
-  const onSliderChange = (value) => {
-    setRating(value.toFixed(1));
+  const onValueChange = (value: number) => {
+    tempSliderValue.current = value;
+    sliderValue.value = value;
+  };
+
+  const onSliderChange = (value: number): void => {
+    setRating(Number(value.toFixed(1)));
     sliderValue.value = value;
   };
 
@@ -91,10 +98,12 @@ const RatingModal = () => {
             maximumValue={1}
             step={0.01}
             value={sliderValue.value}
-            onValueChange={onSliderChange}
+            onValueChange={onValueChange}
+            onSlidingComplete={onSliderChange}
             minimumTrackTintColor={tintColor}
             maximumTrackTintColor={trackTintColor}
             thumbTintColor={tintColor}
+            tapToSeek
           />
         </View>
 

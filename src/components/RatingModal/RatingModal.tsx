@@ -15,6 +15,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { SCREEN_WIDTH } from "@eLearning/constant/constant";
 import ELearningCircularButton from "@eLearning/base/ELearningCircularButton/ELearningCircularButton";
+import { useDebouncedCallback } from "@eLearning/hook/useDebouncedCallback";
 
 const RatingModal = () => {
   const inset = useSafeAreaInsets();
@@ -44,10 +45,11 @@ const RatingModal = () => {
     sliderValue.value = value;
   };
 
-  const onSliderChange = (value: number): void => {
-    setRating(parseInt(value.toFixed(1)));
+  const onSliderChange = useDebouncedCallback((value) => {
+    setRating(value.toFixed(1));
     sliderValue.value = value;
-  };
+  }, 100);
+
 
   const toggleDarkMode = () => {
     Appearance.getColorScheme() === MODE.DARK

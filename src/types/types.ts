@@ -16,3 +16,7 @@ export enum EXPERT_TYPE {
   INTERMEDIATE = 'Intermediate',
   EXPERT = 'Expert'
 }
+
+export interface IDebouncedCallback {
+  (...args: any[]): void;
+}

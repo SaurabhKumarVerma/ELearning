@@ -1,8 +1,12 @@
 import React from 'react'
 import Signup from '@eLearning/components/Signup/Signup'
+import { ScrollView } from 'react-native'
 
 const SignupScreen = () => {
-  return (<Signup />
+  return (
+  <ScrollView showsVerticalScrollIndicator={false}>
+    <Signup />
+  </ScrollView>
   )
 }
 

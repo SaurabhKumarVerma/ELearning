@@ -1,4 +1,4 @@
-import { Appearance, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Appearance, StyleSheet,View } from "react-native";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
@@ -34,7 +34,7 @@ const Signup = () => {
 
 
   return (
-    <ScrollView style={{ flex: 1, top: inset.top, marginHorizontal: 18 }}>
+    <View style={{  top: inset.top, marginHorizontal: 18, marginBottom: '20%'}}>
       <View>
         <ELearningAuthHeader
           ctaText="Sign In"
@@ -120,7 +120,7 @@ const Signup = () => {
                     textPresets="medium"
                     textStyle={{ color: color.whisperWhite }}
                 />
-    </ScrollView>
+    </View>
   );
 };
 

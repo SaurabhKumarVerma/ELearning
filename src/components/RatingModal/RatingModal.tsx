@@ -80,7 +80,7 @@ const RatingModal = () => {
           />
         </View>
 
-        <View>
+        <View style={{marginTop: '20%'}}>
           <Animated.Text style={[styles.emoji, animatedStyle]}>
             {emojiList[animatedEmojiIndex.value]}
           </Animated.Text>

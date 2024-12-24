@@ -34,10 +34,13 @@ const Login = () => {
          console.log('No ID token found');
         const googleCredential = auth.GoogleAuthProvider.credential(signInResult.data?.token);
         return auth().signInWithCredential(googleCredential);
-      }
+        }
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+        return auth().signInWithCredential(googleCredential);
+    };
 
     return (
-        <ScrollView style={{ flex: 1, top: inset.top, marginHorizontal: 18 }}>
+        <View style={{ top: inset.top, marginHorizontal: 18, marginBottom: '20%' }}>
             <View>
                 <ELearningAuthHeader
                     ctaText="Sign Up"
@@ -123,7 +126,7 @@ const Login = () => {
                     textStyle={{ color: color.whisperWhite }}
                 />
             </View>
-        </ScrollView>
+        </View>
     );
 };
 

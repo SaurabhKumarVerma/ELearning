@@ -1,9 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Login from '@eLearning/components/Login/Login'
 
 const LoginScreen = () => {
-  return (<Login />
+  return (
+    <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
+      <Login />
+    </ScrollView>
   )
 }
 

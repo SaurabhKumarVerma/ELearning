@@ -33,21 +33,28 @@
       "expo-font",
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
-     [
-      "expo-image-picker",
-      {
-        "photosPermission": "Allow $(PRODUCT_NAME) to access your photos",
-        "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
-      }
-     ],
-     [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos",
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
+        }
+      ],
+      [
         "expo-build-properties",
         {
           "ios": {
             "useFrameworks": "static"
           }
         }
-     ]
+      ],
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
+        }
+      ]
     ]
   }
 }

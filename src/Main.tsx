@@ -6,11 +6,12 @@ import LoginScreen from './screen/LoginScreen/LoginScreen';
 import SignupScreen from './screen/SignupScreen/SignupScreen';
 import ExpertScreen from './screen/ExpertScreen/ExpertScreen';
 import RatingModal from './components/RatingModal/RatingModal';
+import CourseDetail from './components/CourseDetail/CourseDetail';
 const Main = () => {
   return (
     <NavigationContainer
     >
-      <HomeScreen />
+      <CourseDetail />
     </NavigationContainer>
   )
 }

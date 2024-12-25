@@ -5,6 +5,7 @@ import {
     SimpleLineIcons,
     MaterialIcons,
     MaterialCommunityIcons,
+    EvilIcons
   } from '@expo/vector-icons';
   
   export default [
@@ -14,4 +15,5 @@ import {
     SimpleLineIcons.font,
     MaterialIcons.font,
     MaterialCommunityIcons.font,
+    EvilIcons.font
   ];

@@ -20,3 +20,10 @@ export enum EXPERT_TYPE {
 export interface IDebouncedCallback {
   (...args: any[]): void;
 }
+
+export enum EVIDEOPLAYERSTATUS {
+  IDLE = 'idle',
+  LOADING = 'loading',
+  READY_TO_PLAY = 'readyToPlay',
+  ERROR = 'error'
+}

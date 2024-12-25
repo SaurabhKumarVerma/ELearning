@@ -5,6 +5,7 @@ import ELearningImage from '@eLearning/base/ELearningImage/ELearningImage';
 import { Onboarding } from '../Onborading/Onboarding';
 import GettingStarted from '../Getting-Started/GettingStarted';
 import { MODE } from '@eLearning/types/types';
+import ELearningCourseCard from '@eLearning/base/ELearningCourseCard/ELearningCourseCard';
 
 const Home = () => {
     const theme = useTheme()
@@ -13,7 +14,10 @@ const Home = () => {
     }
     
   return (
-    <Pressable onPress={toggleDarkMode}><GettingStarted /></Pressable>
+    <Pressable style={{marginTop: 100, flexDirection: 'row'}} onPress={toggleDarkMode}>
+      <ELearningCourseCard /> 
+      <ELearningCourseCard /> 
+      </Pressable>
   )
 }
 

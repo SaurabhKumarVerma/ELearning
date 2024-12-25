@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleProp, TextStyle } from 'react-native';
-import { Text } from '@rneui/themed';
+import { Text, TextProps } from '@rneui/themed';
 
 export type Preset =
     | 'heading'
@@ -14,7 +14,7 @@ export type Preset =
     | 'bold'
     | 'black';
 
-interface IELearningText {
+interface IELearningText extends TextProps {
     text: string;
     preset?: Preset;
     size?: number;
@@ -112,7 +112,8 @@ const ELearningText: React.FC<IELearningText> = ({
     preset = 'body',
     size,
     weight,
-    style
+    style,
+    ...rest
 }) => {
     const presetStyle = PRESETS[preset];
 
@@ -123,7 +124,7 @@ const ELearningText: React.FC<IELearningText> = ({
         ...(Array.isArray(style) ? Object.assign({}, ...style) : style),
     };
 
-    return <Text style={combinedStyle}>{text}</Text>;
+    return <Text {...rest} style={combinedStyle}>{text}</Text>;
 };
 
 export default ELearningText;

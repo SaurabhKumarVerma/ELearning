@@ -45,5 +45,6 @@ export const color = {
     cadetGray: '#E7EFF1',
     lightGrayishBlue: '#99A9AD',
     greenishBlue:'#04201B',
-    paleGray: '#DFE1E1'
+    paleGray: '#DFE1E1',
+    smokyGray:"#788D92"
 }

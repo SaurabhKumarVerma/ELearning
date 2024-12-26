@@ -85,8 +85,9 @@ const ELearningCourseCard = () => {
                 <ELearningText
                     numberOfLines={1}
                     preset="semiBold"
-                    size={16}
+                    size={12}
                     text="233.00"
+                    style={{marginLeft: 4}}
                 />
                 <ELearningLoadingButton
                     style={{ borderRadius: 8, zIndex: 1, paddingVertical: 6 }}

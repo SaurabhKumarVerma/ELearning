@@ -26,11 +26,11 @@ const CourseDetail = () => {
         return (
             <Pressable>
                 <MaterialCommunityIcons
-                    name="bookmark-remove"
+                    name="bookmark-plus"
                     size={24}
-                    color="black"
+                    color={theme.mode === MODE.DARK ? color.whisperWhite : color.onyx}
                 />
-                {/* <MaterialCommunityIcons name="bookmark-plus" size={24} color={iconColor} /> */}
+                {/* <MaterialCommunityIcons name="bookmark-remove" size={24} color={iconColor} /> */}
             </Pressable>
         );
     };
@@ -139,9 +139,9 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                     label="Enroll Course"
                     style={[styles.bottonContainer, { bottom: inset.bottom + 10,}]}
                     icon={<MaterialCommunityIcons
-                        name="bookmark-remove"
+                        name="bookmark-plus"
                         size={24}
-                        color="black"
+                        color={theme.mode === MODE.DARK ? color.whisperWhite : color.onyx}
                     />}
                 />
         </View>

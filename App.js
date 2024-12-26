@@ -46,8 +46,8 @@ const App = () => {
 
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
-      <StatusBar />
+    <GestureHandlerRootView style={{flex: 1,}}>
+      <StatusBar hidden backgroundColor='red'/>
       <SafeAreaProvider style={{ backgroundColor: (colorScheme === MODE.DARK ? themeConfig.darkColors.background :themeConfig.lightColors.background) }}>
       <ThemeProvider theme={themeConfig}>
         <Main />

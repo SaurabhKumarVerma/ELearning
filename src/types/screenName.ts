@@ -7,4 +7,7 @@ export const enum ESCREEN {
     SHOW_LIST = 'ShowList',
     LEVEL_SCREEN = 'LevelScreen',
     REMAINDER_SCREEN = 'RemainderScreen',
+    COURSE_DETAIL = 'CourseDetail',
+    ENROLLED_SCREEN = 'Enrolled',
+    BOTTOM_NAVIGATION = 'BottomNavigation'
 }

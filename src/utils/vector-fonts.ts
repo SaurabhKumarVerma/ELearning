@@ -2,7 +2,6 @@ import {
     FontAwesome,
     Ionicons,
     Entypo,
-    SimpleLineIcons,
     MaterialIcons,
     MaterialCommunityIcons,
     EvilIcons
@@ -12,7 +11,6 @@ import {
     FontAwesome.font,
     Ionicons.font,
     Entypo.font,
-    SimpleLineIcons.font,
     MaterialIcons.font,
     MaterialCommunityIcons.font,
     EvilIcons.font

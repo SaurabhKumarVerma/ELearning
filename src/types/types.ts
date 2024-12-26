@@ -27,3 +27,8 @@ export enum EVIDEOPLAYERSTATUS {
   READY_TO_PLAY = 'readyToPlay',
   ERROR = 'error'
 }
+
+export const enum ESCREENICON {
+  HOME = "home-outline",
+  Enrolled = "bookmarks-outline",
+}

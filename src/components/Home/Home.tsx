@@ -1,16 +1,15 @@
-import { Appearance, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet } from 'react-native'
 import React from 'react'
-import { useTheme, useThemeMode } from '@rneui/themed';
-import ELearningImage from '@eLearning/base/ELearningImage/ELearningImage';
-import { Onboarding } from '../Onborading/Onboarding';
-import GettingStarted from '../Getting-Started/GettingStarted';
-import { MODE } from '@eLearning/types/types';
+import { useTheme } from '@rneui/themed';
 import ELearningCourseCard from '@eLearning/base/ELearningCourseCard/ELearningCourseCard';
+import { useNavigation } from '@react-navigation/native';
+import { ESCREEN } from '@eLearning/types/screenName';
 
 const Home = () => {
     const theme = useTheme()
+    const {navigate} = useNavigation()
     const toggleDarkMode = () => {
-      Appearance.getColorScheme() === MODE.DARK ?  Appearance.setColorScheme(MODE.LIGHT) :    Appearance.setColorScheme(MODE.DARK)
+      navigate(ESCREEN.COURSE_DETAIL)
     }
     
   return (

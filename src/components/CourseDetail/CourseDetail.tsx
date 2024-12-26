@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningHeader from "@eLearning/base/ELearningHeader/ELearningHeader";
@@ -12,6 +12,7 @@ import { getFirstAndSecondLetters } from "@eLearning/utils/trimWord";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import ELearningLoadingButton from "@eLearning/base/ELearningButton/ELearningButton";
+import { StatusBar } from "expo-status-bar";
 
 const CourseDetail = () => {
     const inset = useSafeAreaInsets();
@@ -49,8 +50,8 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
     `;
 
     return (
-        <View style={{ top: inset.top, flex: 1, }}>
-            <View style={{ marginHorizontal: 12 }}>
+        <View style={{  flex: 1, top: inset.top}}>
+            <View style={{ marginHorizontal: 12 , marginVertical:12}}>
                 <ELearningHeader headerText="Course Detail" rightIcon={enrolled()} />
             </View>
             <View style={{ paddingBottom: 0 }}>
@@ -155,10 +156,11 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         marginHorizontal: 12,
-        marginBottom: "5%",
-        backgroundColor: "red",
+        marginBottom: Platform.OS === 'ios' ? "4%" : '10%',
+        backgroundColor: "transparent",
         overflowX: "hidden",
         borderRadius: 24,
+        // backg
     },
     detailContainer: {
         flexDirection: "row",

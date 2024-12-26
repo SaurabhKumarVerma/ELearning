@@ -49,7 +49,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
     `;
 
     return (
-        <View style={{ top: inset.top, flex: 1 }}>
+        <View style={{ top: inset.top, flex: 1, }}>
             <View style={{ marginHorizontal: 12 }}>
                 <ELearningHeader headerText="Course Detail" rightIcon={enrolled()} />
             </View>
@@ -66,21 +66,10 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
             >
                 <View style={{ marginHorizontal: 12 }}>
                     <View
-                        style={{
-                            flexDirection: "row",
-                            alignItems: "center",
-                            marginTop: "4%",
-                        }}
+                        style={styles.container}
                     >
                         <View
-                            style={{
-                                backgroundColor: authorNameBackgroundColor,
-                                width: 50,
-                                height: 50,
-                                borderRadius: 25,
-                                alignItems: "center",
-                                justifyContent: "center",
-                            }}
+                            style={[styles.authorContainer, { backgroundColor: authorNameBackgroundColor }]}
                         >
                             <ELearningText
                                 style={{ padding: 10 }}
@@ -110,28 +99,26 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                     </View>
 
                     <View
-                        style={{
-                            flexDirection: "row",
-                            justifyContent: "space-between",
-                            marginHorizontal: 6,
-                            marginTop: "4%",
-                        }}
+                        style={styles.detailContainer}
                     >
-                        <View style={{ flexDirection: "row", alignItems: "center" }}>
+                        <View style={{ flexDirection: "row", alignItems: "center", }}>
                             <AntDesign name="clockcircleo" size={20} color={color.gray} />
                             <ELearningText
-                                style={{ paddingLeft: 10, color: color.gray }}
+                                style={styles.detailTextStyle}
                                 preset="regular"
                                 text={"1.hour 30 min"}
                                 size={14}
                             />
                         </View>
 
-                        <View style={{ flexDirection: "row", alignItems: "center" }}>
-                            <EvilIcons name="star" size={20} color={color.gray} />
+                        <View style={{  flexDirection: 'row' }}>
+                            
+                             <EvilIcons name="star" size={20} color={color.gray} />
                             <ELearningText
-                                style={{ paddingLeft: 10, color: color.gray }}
-                                text="4.7"
+                                 style={styles.detailTextStyle}
+                                preset="regular"
+                                 text="4.7"
+                                size={14}
                             />
                         </View>
                     </View>
@@ -145,32 +132,54 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                     </View>
                 </View>
             </ScrollView>
-            <View
-                style={{
-                    position: "absolute",
-                    bottom: inset.bottom,
-                    left: 0,
-                    right: 0,
-                    paddingHorizontal: 12,
-                    paddingBottom: "10%",
-                }}
-            >
                 <ELearningLoadingButton
                     isLoading={false}
                     handlePress={() => console.log("Press Me")}
                     label="Enroll Course"
-                    style={{ borderRadius: 24, marginHorizontal: 10 }}
+                    style={[styles.bottonContainer, { bottom: inset.bottom + 10,}]}
                     icon={<MaterialCommunityIcons
                         name="bookmark-remove"
                         size={24}
                         color="black"
                     />}
                 />
-            </View>
         </View>
     );
 };
 
 export default CourseDetail;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    bottonContainer: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        marginHorizontal: 12,
+        marginBottom: "5%",
+        backgroundColor: "red",
+        overflowX: "hidden",
+        borderRadius: 24,
+    },
+    detailContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginHorizontal: 6,
+        marginTop: "4%",
+    },
+    detailTextStyle:{ 
+        paddingLeft: 10, 
+        color: color.gray 
+    },
+    authorContainer:{
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    container:{
+        flexDirection: "row",
+        alignItems: "center",
+        marginTop: "4%",
+    }
+});

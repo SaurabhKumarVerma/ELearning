@@ -11,10 +11,12 @@ import { color } from "@eLearning/theme/color";
 import { AntDesign } from "@expo/vector-icons";
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { useNavigation } from "@react-navigation/native";
+import { ESCREEN } from "@eLearning/types/screenName";
 
 const Signup = () => {
   const inset = useSafeAreaInsets();
-
+const navigation = useNavigation();
   const toggleDarkMode = () => {
     Appearance.getColorScheme() === MODE.DARK
       ? Appearance.setColorScheme(MODE.LIGHT)
@@ -39,9 +41,7 @@ const Signup = () => {
         <ELearningAuthHeader
           ctaText="Sign In"
           onClose={toggleDarkMode}
-          onCtaClick={function (): void {
-            throw new Error("Function not implemented.");
-          }}
+          onCtaClick={() => navigation.navigate(ESCREEN.BOTTOM_NAVIGATION)}
         />
       </View>
 

@@ -16,10 +16,12 @@ import ELearningLoadingButton from "@eLearning/base/ELearningButton/ELearningBut
 import AntDesign from "@expo/vector-icons/AntDesign";
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { useNavigation } from "@react-navigation/native";
+import { ESCREEN } from "@eLearning/types/screenName";
 
 const Login = () => {
     const inset = useSafeAreaInsets();
-
+ const navigation = useNavigation();
     const toggleDarkMode = () => {
         Appearance.getColorScheme() === MODE.DARK
             ? Appearance.setColorScheme(MODE.LIGHT)
@@ -45,9 +47,7 @@ const Login = () => {
                 <ELearningAuthHeader
                     ctaText="Sign Up"
                     onClose={toggleDarkMode}
-                    onCtaClick={function (): void {
-                        throw new Error("Function not implemented.");
-                    }}
+                    onCtaClick={() => navigation.navigate(ESCREEN.SIGNUP_SCREEN)}
                 />
             </View>
 

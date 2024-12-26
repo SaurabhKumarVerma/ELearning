@@ -1,8 +1,10 @@
 import { SCREEN_WIDTH } from "@eLearning/constant/constant";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import Animated, {
+    FadeInRight,
+    FadeOutRight,
     runOnJS,
     useAnimatedRef,
     useAnimatedScrollHandler,
@@ -13,6 +15,10 @@ import onboardingData from "./onboardingData";
 import Paginator from "./Paginator";
 import CircularButton from "./CircularButton";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { ESCREEN } from "@eLearning/types/screenName";
+import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
+import ELearningText from "@eLearning/base/ELearningText/ELearningText";
+import { color } from "@eLearning/theme/color";
 
 const MAX_LENGHT = onboardingData.length;
 
@@ -35,12 +41,21 @@ export const Onboarding = () => {
             });
             setIndex(index + 1);
         } else if (index === 2) {
-            //   navigation;
+           
         }
     };
 
     return (
         <ScrollView style={{ top: insert.top, bottom: insert.bottom }} showsVerticalScrollIndicator={false}>
+            {
+                index === 2 && (
+                    <Animated.View entering={FadeInRight.delay(300)}>
+                <TouchableOpacity onPress={() =>  navigation.navigate(ESCREEN.LOGIN_SCREEN)} style={{alignSelf: 'flex-end', marginRight:16}}>
+                    <ELearningText text="Sign In" preset='semiBold' size={16} style={styles.textColor} />
+                </TouchableOpacity>
+            </Animated.View>
+                )
+            }
             <Animated.ScrollView
                 onScroll={scrollHandler}
                 ref={aref}
@@ -74,4 +89,7 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginBottom: 20,
     },
+    textColor: {
+        color: color.forestGreen
+    }
 });

@@ -3,6 +3,7 @@ import {
     StyleProp,
     StyleSheet,
     Text,
+    TextStyle,
     View,
     ViewProps,
 } from "react-native";
@@ -13,16 +14,27 @@ import { MODE } from "@eLearning/types/types";
 import { useNavigation } from "@react-navigation/native";
 import ELearningText, { Preset } from "../ELearningText/ELearningText";
 import { color } from "@eLearning/theme/color";
+import { ViewStyle } from "react-native";
 
 interface IELearningHeader {
     headerText?: string;
-    headerContainerStyle?: StyleProp<ViewProps>;
+    headerContainerStyle?: StyleProp<ViewStyle>;
     rightIcon?: React.ReactElement;
     textPreset?: Preset;
     textSize?: number;
+    textStyle?: StyleProp<TextStyle>
+    showLeftIcon?: boolean
 }
 
-const ELearningHeader = (props: IELearningHeader) => {
+const ELearningHeader = ({
+    headerText,
+    headerContainerStyle,
+    rightIcon,
+    textPreset,
+    textSize,
+    textStyle,
+    showLeftIcon = true
+}: IELearningHeader) => {
     const { theme } = useTheme();
     const navigation = useNavigation();
     const iconColor =
@@ -35,20 +47,26 @@ const ELearningHeader = (props: IELearningHeader) => {
     };
 
     return (
-        <View style={props.headerContainerStyle ?? styles.headerContainer}>
-            <Pressable onPress={onGoBack}>
+        <View style={headerContainerStyle ?? styles.headerContainer}>
+            {
+                showLeftIcon && (
+                    <Pressable onPress={onGoBack}>
                 <AntDesign name="left" size={24} color={iconColor} />
             </Pressable>
+                )
+            }
+            
 
-            {props.headerText ? (
+            {headerText ? (
                 <ELearningText
-                    text={props.headerText}
-                    preset={props.textPreset ?? "medium"}
-                    size={props.textSize ?? 16}
+                    text={headerText}
+                    preset={textPreset ?? "medium"}
+                    size={textSize ?? 16}
+                    style={textStyle ?? {}}
                 />
             ) : null}
 
-            {props.rightIcon ? <>{props.rightIcon}</> : null}
+            {rightIcon ? <>{rightIcon}</> : <View />}
         </View>
     );
 };

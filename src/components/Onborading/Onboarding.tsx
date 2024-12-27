@@ -13,10 +13,8 @@ import Animated, {
 import RenderItem from "./RenderItem";
 import onboardingData from "./onboardingData";
 import Paginator from "./Paginator";
-import CircularButton from "./CircularButton";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ESCREEN } from "@eLearning/types/screenName";
-import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
 import ELearningText from "@eLearning/base/ELearningText/ELearningText";
 import { color } from "@eLearning/theme/color";
 
@@ -49,7 +47,7 @@ export const Onboarding = () => {
         <ScrollView style={{ top: insert.top, bottom: insert.bottom }} showsVerticalScrollIndicator={false}>
             {
                 index === 2 && (
-                    <Animated.View entering={FadeInRight.delay(300)}>
+                    <Animated.View entering={FadeInRight.delay(300)} exiting={FadeOutRight.delay(100)}>
                 <TouchableOpacity onPress={() =>  navigation.navigate(ESCREEN.LOGIN_SCREEN)} style={{alignSelf: 'flex-end', marginRight:16}}>
                     <ELearningText text="Sign In" preset='semiBold' size={16} style={styles.textColor} />
                 </TouchableOpacity>
@@ -74,11 +72,6 @@ export const Onboarding = () => {
                     <Paginator itemsLength={onboardingData.length} scrollX={scrollX} />
                 </View>
 
-                {/* <CircularButton
-                    screensLenght={onboardingData.length}
-                    onPress={onPressButton}
-                    index={index}
-                /> */}
             </View>
         </ScrollView>
     );

@@ -25,6 +25,7 @@ const ELearningCourseCard = () => {
                 borderRadius: 16,
                 overflow: "hidden",
                 backgroundColor: theme.colors.background,
+                zIndex: 1
             }}
         >
             <ELearningImage

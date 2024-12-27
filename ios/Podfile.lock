@@ -63,8 +63,6 @@ PODS:
     - ExpoModulesCore
   - ExpoVideo (2.0.3):
     - ExpoModulesCore
-  - ExpoVideoThumbnails (9.0.2):
-    - ExpoModulesCore
   - FBLazyVector (0.76.5)
   - Firebase/Auth (11.5.0):
     - Firebase/CoreOnly
@@ -1951,7 +1949,6 @@ DEPENDENCIES:
   - ExpoSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - ExpoSystemUI (from `../node_modules/expo-system-ui/ios`)
   - ExpoVideo (from `../node_modules/expo-video/ios`)
-  - ExpoVideoThumbnails (from `../node_modules/expo-video-thumbnails/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - fmt (from `../node_modules/react-native/third-party-podspecs/fmt.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -2079,8 +2076,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-system-ui/ios"
   ExpoVideo:
     :path: "../node_modules/expo-video/ios"
-  ExpoVideoThumbnails:
-    :path: "../node_modules/expo-video-thumbnails/ios"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   fmt:
@@ -2239,7 +2234,6 @@ SPEC CHECKSUMS:
   ExpoSplashScreen: 5818efe67bdbcc862b97fef589571c5b4d53fa7d
   ExpoSystemUI: 2d729aea8219f03af1b1996c1d14488a01fea94a
   ExpoVideo: d630401195169343272d9d48800e0b38d9c39974
-  ExpoVideoThumbnails: 8b6bbe3cb76dd2225910667b896b27855bbda694
   FBLazyVector: 1bf99bb46c6af9a2712592e707347315f23947aa
   Firebase: 7a56fe4f56b5ab81b86a6822f5b8f909ae6fc7e2
   FirebaseAppCheckInterop: 347aa09a805219a31249b58fc956888e9fcb314b

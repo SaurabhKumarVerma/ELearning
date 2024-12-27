@@ -1,44 +1,86 @@
-import { StyleSheet, View } from 'react-native'
-import React from 'react'
-import { useTheme } from '@rneui/themed';
-import { useNavigation } from '@react-navigation/native';
-import { ESCREEN } from '@eLearning/types/screenName';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import ELearningHeader from '@eLearning/base/ELearningHeader/ELearningHeader';
-import { useStore } from '@eLearning/store/StoreContext';
+import { ActivityIndicator, FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
+import React, { useEffect } from "react";
+import { useTheme } from "@rneui/themed";
+import { useNavigation } from "@react-navigation/native";
+import { ESCREEN } from "@eLearning/types/screenName";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import ELearningHeader from "@eLearning/base/ELearningHeader/ELearningHeader";
+import { useStore } from "@eLearning/store/StoreContext";
+import { ICourse } from "@eLearning/models/courses.model";
+import ELearningCourseCard from "@eLearning/base/ELearningCourseCard/ELearningCourseCard";
+import ELearningText from "@eLearning/base/ELearningText/ELearningText";
+import { Divider } from "@rneui/base";
+import { observer } from "mobx-react";
 
 const Home = () => {
-    const theme = useTheme()
-     const { top } = useSafeAreaInsets();
-    const {navigate} = useNavigation()
-    const toggleDarkMode = () => {
-      navigate(ESCREEN.COURSE_DETAIL)
-    }
-    const { courseStore } = useStore();
-    
-    console.log(courseStore);
-    
+  const { top } = useSafeAreaInsets();
+  const { navigate } = useNavigation();
+  const navigateToDetailScreen = () => {
+    navigate(ESCREEN.COURSE_DETAIL)
+  }
+  const { courseStore } = useStore();
+
+  useEffect(() => {
+    courseStore.getCourseList();
+  }, []);
+
+  const renderItem = ({ item }: { item: ICourse }) => {
+    return (
+      <TouchableOpacity onPress={navigateToDetailScreen}>
+        <ELearningCourseCard
+        courseImage={item?.pic}
+        title={item?.title}
+        author={item?.instructor.name}
+        price={item?.org_price}
+        courseDescription={item?.desc_text}
+        courseRating={item?.rating}
+      />
+      </TouchableOpacity>
+    );
+  };
+
+  const emptyComponent = () => {
+    return (
+      <View>
+        <ELearningText text="No Data Found" />
+      </View>
+    );
+  };
+
+  if (courseStore.isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center" }}>
+        <ActivityIndicator size={"small"} />
+      </View>
+    );
+  }
+
   return (
-    <View style={{  top: top}}>
-       <View style={{ marginHorizontal: 12, marginVertical: 12 }}>
+    <View style={{ top: top }}>
+      <View style={{ marginHorizontal: 12, marginVertical: 4 }}>
         <ELearningHeader
           showLeftIcon={false}
           headerText="Home"
-          headerContainerStyle={{flexDirection: 'row', alignSelf: 'center'}}
-          textStyle={{ textAlign: "center", alignSelf: 'center' }}
+          headerContainerStyle={{
+            flexDirection: "row",
+            alignSelf: "center",
+            marginBottom: 12,
+          }}
+          textStyle={{ fontSize: 18 }}
+          textPreset="semiBold"
         />
+        <Divider />
       </View>
+      <FlatList
+        data={courseStore.courseList}
+        keyExtractor={(item, index) => item.id}
+        renderItem={renderItem}
+        ListEmptyComponent={emptyComponent}
+      />
+    </View>
+  );
+};
 
-      <View style={{flexDirection: 'row'}}>
-      {/* <ELearningCourseCard />  */}
-      {/* <ELearningCourseCard />  */}
-      </View>
-      
-      {/* <ELearningCourseCard />  */}
-      </View>
-  )
-}
+export default observer(Home);
 
-export default Home
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

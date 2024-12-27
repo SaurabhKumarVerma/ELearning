@@ -17,6 +17,7 @@ interface IELearningCourseCard {
     price: string;
     courseDescription: string
     courseRating: number
+    navigateToDetail: () => void
 }
 
 const ELearningCourseCard = (props: IELearningCourseCard) => {
@@ -80,7 +81,7 @@ const ELearningCourseCard = (props: IELearningCourseCard) => {
                     isLoading={false}
                     label="Details"
                     textStyle={{ color: color.whisperWhite , fontSize: 14}}
-                    handlePress={() => console.log("Hello")}
+                    handlePress={() =>{}}
 
                 />
             </View>

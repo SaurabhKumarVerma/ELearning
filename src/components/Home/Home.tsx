@@ -11,6 +11,7 @@ import ELearningCourseCard from "@eLearning/base/ELearningCourseCard/ELearningCo
 import ELearningText from "@eLearning/base/ELearningText/ELearningText";
 import { Divider } from "@rneui/base";
 import { observer } from "mobx-react";
+import { BOTTOM_BAR_HEIGHT } from "@eLearning/constant/constant";
 
 const Home = () => {
   const { top } = useSafeAreaInsets();
@@ -34,6 +35,7 @@ const Home = () => {
         price={item?.org_price}
         courseDescription={item?.desc_text}
         courseRating={item?.rating}
+        navigateToDetail={navigateToDetailScreen}
       />
       </TouchableOpacity>
     );
@@ -55,8 +57,14 @@ const Home = () => {
     );
   }
 
+  const footerComponent = () => {
+    return(
+      <View style={{marginBottom: '24%', height: BOTTOM_BAR_HEIGHT}}/>
+    )
+  }
+
   return (
-    <View style={{ top: top }}>
+    <View style={{ top: top, flex: 1 }}>
       <View style={{ marginHorizontal: 12, marginVertical: 4 }}>
         <ELearningHeader
           showLeftIcon={false}
@@ -76,6 +84,8 @@ const Home = () => {
         keyExtractor={(item, index) => item.id}
         renderItem={renderItem}
         ListEmptyComponent={emptyComponent}
+        ListFooterComponent={footerComponent}
+        style={{flex: 1}}
       />
     </View>
   );

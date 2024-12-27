@@ -11,6 +11,7 @@ import vectorFonts from '@eLearning/utils/vector-fonts';
 import { StatusBar } from 'expo-status-bar';
 import { MODE } from '@eLearning/types/types';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { StoreProvider } from '@eLearning/store/StoreProvider';
 
 GoogleSignin.configure({
   webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
@@ -46,14 +47,16 @@ const App = () => {
 
 
   return (
+    <StoreProvider>
     <GestureHandlerRootView style={{flex: 1,}}>
-      <StatusBar hidden backgroundColor='red'/>
-      <SafeAreaProvider style={{ backgroundColor: (colorScheme === MODE.DARK ? themeConfig.darkColors.background :themeConfig.lightColors.background) }}>
+      <StatusBar hidden/>
+      <SafeAreaProvider >
       <ThemeProvider theme={themeConfig}>
         <Main />
       </ThemeProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
+    </StoreProvider>
   );
 };
 

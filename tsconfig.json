@@ -1,5 +1,6 @@
 {
 "compilerOptions": {
+  "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
       "@eLearning/*": ["src/*"],
@@ -18,5 +19,6 @@
       "@config": ["src/config/*"]
     }
   },
-  "extends": "expo/tsconfig.base"
+  "extends": "expo/tsconfig.base",
+  "allowSyntheticDefaultImports": true,
 }

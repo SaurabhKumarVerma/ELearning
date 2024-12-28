@@ -1,13 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
-import { Card, useTheme } from "@rneui/themed";
+import { Card } from "@rneui/themed";
 import ELearningImage from "../ELearningImage/ELearningImage";
-import { SCREEN_WIDTH } from "@eLearning/constant/constant";
 import ELearningText from "../ELearningText/ELearningText";
 import { color } from "@eLearning/theme/color";
 
-const ELearningListingCard = () => {
-    const { theme } = useTheme();
+interface IELearningListingCard {
+    courseImage: string;
+    courseTitle: string;
+    author: string;
+    price: string;
+}
+
+const ELearningListingCard = (props: IELearningListingCard) => {
     return (
         <Card
             containerStyle={styles.container}
@@ -15,8 +20,7 @@ const ELearningListingCard = () => {
             <View style={{ flexDirection: "row" }}>
                 <ELearningImage
                     imageData={{
-                        source:
-                            "https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg",
+                        source:props.courseImage,
                         style: { aspectRatio: 1.6, borderRadius: 6 },
                     }}
                 />
@@ -25,18 +29,18 @@ const ELearningListingCard = () => {
                     <ELearningText
                         style={{ width: "90%" }}
                         numberOfLines={2}
-                        text="Title kdjbaskjdbkasjbdkjas  jashdasjdlkasj hdkashdnlasdjlas dlahdlkasdjlas asldjaklsjdlkasj ndlkajsdklasjld l dkajsdkajd kladjkajsdk "
+                        text={props.courseTitle}
                         size={16}
                         preset="medium"
                     />
                     <ELearningText
-                        text="Author"
+                        text={props.author}
                         numberOfLines={1}
                         size={10}
                         preset="medium"
                         style={{ color: color.gray }}
                     />
-                    <ELearningText text="Price" size={14} preset="medium" />
+                    <ELearningText text={props.price} size={14} preset="medium" />
                 </View>
             </View>
         </Card>

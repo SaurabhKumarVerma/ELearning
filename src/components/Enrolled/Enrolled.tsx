@@ -1,26 +1,26 @@
 import {
   FlatList,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningListingCard from "@eLearning/base/ELearningListingCard/ELearningListingCard";
 import ELearningHeader from "@eLearning/base/ELearningHeader/ELearningHeader";
 import { observer } from "mobx-react";
 import { useStore } from "@eLearning/store/StoreContext";
 import { ICourse } from "@eLearning/models/courses.model";
-import ELearningText from "@eLearning/base/ELearningText/ELearningText";
 import { BOTTOM_BAR_HEIGHT } from "@eLearning/constant/constant";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Divider } from "@rneui/themed";
+import LottieView from "lottie-react-native";
 
 const Enrolled = () => {
   const { top } = useSafeAreaInsets();
   const { enrolledStore } = useStore();
   const { navigate } = useNavigation();
+  const animation = useRef<LottieView>(null);
 
   useEffect(() => { }, []);
 
@@ -52,8 +52,16 @@ const Enrolled = () => {
 
   const emptyComponent = () => {
     return (
-      <View>
-        <ELearningText text="No Data Found" />
+      <View style={{flex: 1, alignSelf: 'center'}}>
+        <LottieView
+        autoPlay
+        ref={animation}
+        style={{
+          width: 200,
+          height: 200,
+        }}
+        source={require('../../../assets/lottie/noData.json')}
+      />
       </View>
     );
   };

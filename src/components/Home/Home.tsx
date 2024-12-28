@@ -16,8 +16,12 @@ import { BOTTOM_BAR_HEIGHT } from "@eLearning/constant/constant";
 const Home = () => {
   const { top } = useSafeAreaInsets();
   const { navigate } = useNavigation();
-  const navigateToDetailScreen = () => {
-    navigate(ESCREEN.COURSE_DETAIL)
+
+
+  const navigateToDetailScreen = (id: string) => {
+    navigate(ESCREEN.COURSE_DETAIL, {
+      courseId: id
+    })
   }
   const { courseStore } = useStore();
 
@@ -27,7 +31,7 @@ const Home = () => {
 
   const renderItem = ({ item }: { item: ICourse }) => {
     return (
-      <TouchableOpacity onPress={navigateToDetailScreen}>
+      <TouchableOpacity onPress={() => navigateToDetailScreen(item.id)}>
         <ELearningCourseCard
         courseImage={item?.pic}
         title={item?.title}

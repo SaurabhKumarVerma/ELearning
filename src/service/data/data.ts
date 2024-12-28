@@ -20,7 +20,7 @@ export const data:ICourse[] = [
             "name": "Clare Krause"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -64,7 +64,7 @@ export const data:ICourse[] = [
             "name": "Kenny Jordan"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -130,7 +130,7 @@ export const data:ICourse[] = [
             "name": "Luann Klein"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -306,7 +306,7 @@ export const data:ICourse[] = [
             "name": "Mara Rangel"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         }
     },
     {
@@ -504,7 +504,7 @@ export const data:ICourse[] = [
             "name": "Charles Downs"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         }
     },
     {
@@ -526,7 +526,7 @@ export const data:ICourse[] = [
             "name": "Winifred Barr"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         }
     },
     {
@@ -570,7 +570,7 @@ export const data:ICourse[] = [
             "name": "Shelia Gallagher"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         }
     },
     {
@@ -790,7 +790,7 @@ export const data:ICourse[] = [
             "name": "Ivory Boyle"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -834,7 +834,7 @@ export const data:ICourse[] = [
             "name": "Scott Perry"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         }
     },
     {
@@ -856,7 +856,7 @@ export const data:ICourse[] = [
             "name": "Ivory Boyle"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -944,7 +944,7 @@ export const data:ICourse[] = [
             "name": "Ivory Boyle"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -1054,7 +1054,7 @@ export const data:ICourse[] = [
             "name": "Brain Caldwell"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -1076,7 +1076,7 @@ export const data:ICourse[] = [
             "name": "Lindsay Gomez"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -1164,7 +1164,7 @@ export const data:ICourse[] = [
             "name": "Clare Krause"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -1186,7 +1186,7 @@ export const data:ICourse[] = [
             "name": "Faustino Rose"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -1208,7 +1208,7 @@ export const data:ICourse[] = [
             "name": "Estelle Cantu"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -1252,7 +1252,7 @@ export const data:ICourse[] = [
             "name": "Luann Klein"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -1296,7 +1296,7 @@ export const data:ICourse[] = [
             "name": "Scott Perry"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         }
     },
     {
@@ -1494,7 +1494,7 @@ export const data:ICourse[] = [
             "name": "Kenton Norton"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         }
     },
     {
@@ -1604,7 +1604,7 @@ export const data:ICourse[] = [
             "name": "Charles Downs"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
     },
     {
@@ -1626,7 +1626,7 @@ export const data:ICourse[] = [
             "name": "Carolyn Singleton"
         },
         "video_link": {
-            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+            "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         }
     },
     {

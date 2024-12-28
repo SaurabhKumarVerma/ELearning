@@ -19,9 +19,13 @@ export interface ICourse {
   video_link: {
     url: string;
   };
+  isCourseEnrolled?: boolean
 }
 
 export interface ICourseService{
-  getCourseList();
-
+  getCourseList: () => void;
+  showRatingModel: () => void;
+  closedRatingModel:() => void;
+  getStudentEnrolled:(id:string) => void;
+  getCourseDetail:(id:string) => void
 }

@@ -1,11 +1,10 @@
-import { Appearance, StyleSheet, Modal, View } from "react-native";
+import { StyleSheet, Modal, View } from "react-native";
 import React, { useRef, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningText from "@eLearning/base/ELearningText/ELearningText";
 import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
 import { color } from "@eLearning/theme/color";
-import { MODE } from "@eLearning/types/types";
-import { useTheme, Slider } from "@rneui/themed";
+import { Slider, useTheme } from "@rneui/themed";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -15,10 +14,13 @@ import Animated, {
 } from "react-native-reanimated";
 import { SCREEN_WIDTH } from "@eLearning/constant/constant";
 import ELearningCircularButton from "@eLearning/base/ELearningCircularButton/ELearningCircularButton";
-import { useDebouncedCallback } from "@eLearning/hook/useDebouncedCallback";
+import { useStore } from "@eLearning/store/StoreContext";
+import { observer } from "mobx-react";
+import { MODE } from "@eLearning/types/types";
 
 const RatingModal = () => {
   const inset = useSafeAreaInsets();
+  const { courseStore } = useStore();
   const { theme } = useTheme();
 
   const [rating, setRating] = useState<number>(0);
@@ -41,46 +43,55 @@ const RatingModal = () => {
   }));
 
   const onValueChange = (value: number) => {
-    tempSliderValue.current = value.toPrecision(1);;
-    sliderValue.value = value.toPrecision(1);;
+    tempSliderValue.current = value.toPrecision(1);
+    sliderValue.value = value.toPrecision(1);
   };
 
-  const onSliderChange = (value:number) => {
+  const onSliderChange = (value: number) => {
     setRating(value.toPrecision(1));
     sliderValue.value = value.toPrecision(1);
-  }
+  };
 
-
-  const toggleDarkMode = () => {
-    Appearance.getColorScheme() === MODE.DARK
-      ? Appearance.setColorScheme(MODE.LIGHT)
-      : Appearance.setColorScheme(MODE.DARK);
+  const closeModal = () => {
+    courseStore.closedRatingModel();
   };
 
   const tintColor =
-    theme.mode === MODE.LIGHT ? color.tropicalGreen : color.forestGreen;
+    theme.mode === MODE.DARK ? color.tropicalGreen : color.forestGreen;
   const trackTintColor =
-    theme.mode === MODE.LIGHT ? color.paleGray : color.darkGreen;
+    theme.mode === MODE.DARK ? color.paleGray : color.darkGreen;
 
   return (
-    <Modal visible={true} transparent>
-      <View style={{ flex: 1, marginHorizontal: 18, marginTop: inset.top }}>
-        <ELearningAuthHeader onClose={toggleDarkMode} />
-        <View style={{ marginTop: 18 }}>
-          <ELearningText
-            text="How was your session?"
-            preset="semiBold"
-            size={24}
-          />
-          <ELearningText
-            text="Love it! What was your favorite part?"
-            preset="regular"
-            size={16}
-            style={{ color: color.gray, marginTop: 8 }}
-          />
+    <Modal
+      visible={courseStore.isRatingModalVisible}
+      statusBarTranslucent
+      animationType="slide"
+    >
+      <View
+        style={{
+          flex: 1,
+          backgroundColor:
+            theme.mode === MODE.DARK ? color.onyx : color.whisperWhite,
+        }}
+      >
+        <View style={{ marginTop: inset.top, marginHorizontal: 18 }}>
+          <ELearningAuthHeader onClose={closeModal} />
+          <View style={{ marginTop: 18 }}>
+            <ELearningText
+              text="How was your session?"
+              preset="semiBold"
+              size={24}
+            />
+            <ELearningText
+              text="Love it! What was your favorite part?"
+              preset="regular"
+              size={16}
+              style={{ color: color.gray, marginTop: 8 }}
+            />
+          </View>
         </View>
 
-        <View style={{marginTop: '20%'}}>
+        <View style={{ marginTop: "20%" }}>
           <Animated.Text style={[styles.emoji, animatedStyle]}>
             {emojiList[animatedEmojiIndex.value]}
           </Animated.Text>
@@ -110,7 +121,8 @@ const RatingModal = () => {
               alignContent: "center",
               alignItems: "center",
               flex: 1,
-              shadowColor: theme.mode === MODE.DARK ? "white" : "#000",
+              shadowColor:
+                theme.mode === MODE.DARK ? color.whisperWhite : color.onyx,
               shadowOffset: {
                 width: 0,
                 height: 2,
@@ -138,7 +150,7 @@ const RatingModal = () => {
 
         <ELearningCircularButton
           text="Continue"
-          onPress={() => console.log("Rating:", rating)}
+          onPress={() => courseStore.closedRatingModel()}
           style={styles.circularButton}
         />
       </View>
@@ -146,7 +158,7 @@ const RatingModal = () => {
   );
 };
 
-export default RatingModal;
+export default observer(RatingModal);
 
 const styles = StyleSheet.create({
   emoji: {

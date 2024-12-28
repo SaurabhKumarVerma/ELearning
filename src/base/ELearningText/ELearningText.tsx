@@ -15,7 +15,7 @@ export type Preset =
     | 'black';
 
 interface IELearningText extends TextProps {
-    text: string;
+    text: string | number;
     preset?: Preset;
     size?: number;
     weight?: keyof typeof FONT_FAMILY_MAP;

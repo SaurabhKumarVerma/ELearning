@@ -1,5 +1,12 @@
-import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import {
+    ActivityIndicator,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    TouchableOpacity,
+    View,
+} from "react-native";
+import React, { useEffect } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningHeader from "@eLearning/base/ELearningHeader/ELearningHeader";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
@@ -12,77 +19,87 @@ import { getFirstAndSecondLetters } from "@eLearning/utils/trimWord";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import ELearningLoadingButton from "@eLearning/base/ELearningButton/ELearningButton";
-import { StatusBar } from "expo-status-bar";
+import { useStore } from "@eLearning/store/StoreContext";
+import { useRoute } from "@react-navigation/native";
+import { observer } from "mobx-react";
 
 const CourseDetail = () => {
     const inset = useSafeAreaInsets();
     const { theme } = useTheme();
-    const iconColor =
-        theme.mode === MODE.DARK ? color.whisperWhite : color.blackForestGreen;
+    const { courseStore, enrolledStore } = useStore();
+    const route = useRoute();
+
+    useEffect(() => {
+        courseStore.getCourseDetail(route?.params?.courseId);
+    }, []);
+
+    if (courseStore?.isCourseDetailLoading) {
+        return <ActivityIndicator size={"large"} />;
+    }
+
     const authorNameBackgroundColor =
         theme.mode === MODE.DARK ? color.deepForestGreen : color.tropicalGreen;
 
+    const enrolledUser = () => {
+        courseStore.getStudentEnrolled(route?.params?.courseId);
+    };
+    
     const enrolled = () => {
         return (
-            <Pressable>
-                <MaterialCommunityIcons
-                    name="bookmark-plus"
-                    size={24}
-                    color={theme.mode === MODE.DARK ? color.whisperWhite : color.onyx}
-                />
-                {/* <MaterialCommunityIcons name="bookmark-remove" size={24} color={iconColor} /> */}
-            </Pressable>
+            <TouchableOpacity onPress={() => enrolledUser()}>
+<MaterialCommunityIcons
+                        name={enrolledStore.enrolledCourseId(route?.params?.courseId) ? "bookmark-plus" :"bookmark-remove"}
+                        size={24}
+                        color={theme.mode === MODE.DARK ? color.whisperWhite : color.onyx}
+                    />
+                
+            </TouchableOpacity>
         );
     };
+    console.log("this is ", courseStore.courseDetailData[0]?.isCourseEnrolled);
 
     const onFullScreenExit = () => {
-        console.log("edddd");
+        courseStore.showRatingModel();
     };
 
-    const text = `
-    
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-    
-    `;
-
     return (
-        <View style={{  flex: 1, top: inset.top}}>
-            <View style={{ marginHorizontal: 12 , marginVertical:12}}>
+        <View style={{ flex: 1, top: inset.top }}>
+            <View style={{ marginHorizontal: 12, marginVertical: 12 }}>
                 <ELearningHeader headerText="Course Detail" rightIcon={enrolled()} />
             </View>
             <View style={{ paddingBottom: 0 }}>
                 <ELearningVideo
                     onFullScreenExit={onFullScreenExit}
-                    videoUrl="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                    imageUrl="https://picsum.photos/id/1/5000/3333"
+                    videoUrl={courseStore?.courseDetailData[0]?.video_link?.url}
+                    imageUrl={courseStore.courseDetailData[0]?.pic}
                 />
             </View>
             <ScrollView
-                style={{ marginBottom: '26%', flex: 1 }}
+                style={{ flex: 1 }}
                 showsVerticalScrollIndicator={false}
+                alwaysBounceVertical
             >
                 <View style={{ marginHorizontal: 12 }}>
-                    <View
-                        style={styles.container}
-                    >
+                    <View style={styles.container}>
                         <View
-                            style={[styles.authorContainer, { backgroundColor: authorNameBackgroundColor }]}
+                            style={[
+                                styles.authorContainer,
+                                { backgroundColor: authorNameBackgroundColor },
+                            ]}
                         >
                             <ELearningText
                                 style={{ padding: 10 }}
                                 preset="semiBold"
-                                text={getFirstAndSecondLetters("Perter Moew")}
+                                text={getFirstAndSecondLetters(
+                                    courseStore?.courseDetailData[0]?.instructor?.name
+                                )}
                                 size={16}
                             />
                         </View>
                         <ELearningText
-                            style={{ padding: 10 }}
+                            style={{ paddingHorizontal: 10 }}
                             preset="regular"
-                            text={"Perter Moew"}
+                            text={courseStore?.courseDetailData[0]?.instructor?.name}
                             size={16}
                         />
                     </View>
@@ -92,63 +109,65 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                             numberOfLines={2}
                             style={{ padding: 10 }}
                             preset="semiBold"
-                            text={
-                                "Comic drawing essential for everyone! Comic drawing essential for everyone! Comic drawing essential for everyone!"
-                            }
+                            text={courseStore?.courseDetailData[0]?.title}
                             size={16}
                         />
                     </View>
 
-                    <View
-                        style={styles.detailContainer}
-                    >
-                        <View style={{ flexDirection: "row", alignItems: "center", }}>
+                    <View style={styles.detailContainer}>
+                        <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <AntDesign name="clockcircleo" size={20} color={color.gray} />
                             <ELearningText
                                 style={styles.detailTextStyle}
                                 preset="regular"
-                                text={"1.hour 30 min"}
+                                text={courseStore?.courseDetailData[0]?.duration}
                                 size={14}
                             />
                         </View>
 
-                        <View style={{  flexDirection: 'row' }}>
-                            
-                             <EvilIcons name="star" size={20} color={color.gray} />
+                        <View style={{ flexDirection: "row" }}>
+                            <EvilIcons name="star" size={20} color={color.gray} />
                             <ELearningText
-                                 style={styles.detailTextStyle}
+                                style={styles.detailTextStyle}
                                 preset="regular"
-                                 text="4.7"
+                                text={courseStore?.courseDetailData[0]?.rating}
                                 size={14}
                             />
                         </View>
                     </View>
 
-                    <View style={{ marginTop: "2%" }}>
+                    <View style={{ marginTop: "2%", paddingBottom: "40%" }}>
                         <ELearningText
                             preset="light"
-                            style={{ textAlign: "justify" }}
-                            text={text}
+                            style={styles.descStyle}
+                            text={courseStore?.courseDetailData[0]?.desc_text}
+                            size={16}
                         />
                     </View>
                 </View>
             </ScrollView>
-                <ELearningLoadingButton
-                    isLoading={false}
-                    handlePress={() => console.log("Press Me")}
-                    label="Enroll Course"
-                    style={[styles.bottonContainer, { bottom: inset.bottom + 10,}]}
-                    icon={<MaterialCommunityIcons
-                        name="bookmark-plus"
+            <ELearningLoadingButton
+                isLoading={false}
+                handlePress={enrolledUser}
+                label="Enroll Course"
+                style={[styles.bottonContainer, { bottom: inset.bottom + 10 }]}
+                icon={
+                    <MaterialCommunityIcons
+                        name={
+                            enrolledStore.enrolledCourseId(route?.params?.courseId)
+                                ? "bookmark-plus"
+                                : "bookmark-remove"
+                        }
                         size={24}
                         color={theme.mode === MODE.DARK ? color.whisperWhite : color.onyx}
-                    />}
-                />
+                    />
+                }
+            />
         </View>
     );
 };
 
-export default CourseDetail;
+export default observer(CourseDetail);
 
 const styles = StyleSheet.create({
     bottonContainer: {
@@ -156,11 +175,10 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         marginHorizontal: 12,
-        marginBottom: Platform.OS === 'ios' ? "4%" : '10%',
+        marginBottom: Platform.OS === "ios" ? "4%" : "10%",
         backgroundColor: "transparent",
         overflowX: "hidden",
         borderRadius: 24,
-        // backg
     },
     detailContainer: {
         flexDirection: "row",
@@ -168,20 +186,25 @@ const styles = StyleSheet.create({
         marginHorizontal: 6,
         marginTop: "4%",
     },
-    detailTextStyle:{ 
-        paddingLeft: 10, 
-        color: color.gray 
+    detailTextStyle: {
+        paddingLeft: 10,
+        color: color.gray,
     },
-    authorContainer:{
+    authorContainer: {
         width: 50,
         height: 50,
         borderRadius: 25,
         alignItems: "center",
         justifyContent: "center",
     },
-    container:{
+    container: {
         flexDirection: "row",
         alignItems: "center",
         marginTop: "4%",
-    }
+    },
+    descStyle: {
+        textAlign: "justify",
+        marginTop: 10,
+        justifyContent: "flex-start",
+    },
 });

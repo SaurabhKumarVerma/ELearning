@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useTheme } from '@rneui/themed'
 import Enrolled from '@eLearning/components/Enrolled/Enrolled'
+import { observer } from 'mobx-react'
 
 const EnrolledScreen = () => {
   const {theme} = useTheme()
@@ -12,6 +13,6 @@ const EnrolledScreen = () => {
   )
 }
 
-export default EnrolledScreen
+export default observer(EnrolledScreen)
 
 const styles = StyleSheet.create({})

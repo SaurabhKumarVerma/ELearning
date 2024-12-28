@@ -4,14 +4,19 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningListingCard from "@eLearning/base/ELearningListingCard/ELearningListingCard";
 import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
 import ELearningHeader from "@eLearning/base/ELearningHeader/ELearningHeader";
+import { observer } from "mobx-react";
+import { useStore } from "@eLearning/store/StoreContext";
 
 const Enrolled = () => {
   const { top } = useSafeAreaInsets();
+  const {enrolledStore} = useStore()
+  console.log("enrolledStore ==>", enrolledStore);
+  
   return (
     <View style={{ top: top }}>
       <View style={{ marginHorizontal: 12, marginVertical: 12 }}>
         <ELearningHeader
-          headerText="Course Detail"
+          headerText="Enrolled Course"
           headerContainerStyle={{
             flexDirection: "row",
             justifyContent: "space-between",
@@ -24,6 +29,6 @@ const Enrolled = () => {
   );
 };
 
-export default Enrolled;
+export default observer(Enrolled);
 
 const styles = StyleSheet.create({});

@@ -17,7 +17,7 @@ interface IELearningCourseCard {
     price: string;
     courseDescription: string
     courseRating: number
-    navigateToDetail: () => void
+    navigateToDetail: (id:string | number) => void
 }
 
 const ELearningCourseCard = (props: IELearningCourseCard) => {

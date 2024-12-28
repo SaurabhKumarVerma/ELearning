@@ -4,7 +4,7 @@ import {
   StyleSheet,
   ViewStyle,
 } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useEvent, useEventListener } from "expo";
 import { useVideoPlayer, VideoView } from "expo-video";
 import { SCREEN_WIDTH } from "@eLearning/constant/constant";
@@ -35,6 +35,7 @@ const ELearningVideo = ({
     player.loop = false;
     player.pause();
     player.showNowPlayingNotification = true;
+    
   });
 
   const { isPlaying } = useEvent(player, "playingChange", {

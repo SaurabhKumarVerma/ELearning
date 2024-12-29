@@ -88,7 +88,7 @@ const Enrolled = () => {
   };
 
   const footerComponent = () => {
-    return <View style={{ marginBottom: "24%", height: BOTTOM_BAR_HEIGHT }} />;
+    return <View style={{ marginBottom: "35%", height: BOTTOM_BAR_HEIGHT }} />;
   };
 
   return (

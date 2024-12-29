@@ -37,10 +37,13 @@ import ELearningLoadingButton from "@eLearning/base/ELearningButton/ELearningBut
 import Feather from "@expo/vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
 import { ESCREEN } from "@eLearning/types/screenName";
+import { observer } from "mobx-react";
+import { useStore } from "@eLearning/store/StoreContext";
 
 const Account = () => {
     const { theme } = useTheme();
     const navigation = useNavigation();
+    const { userStore } = useStore()
     const backgroundColor =
         theme.mode === MODE.DARK ? color.darkForestGreen : color.forestGreen;
 
@@ -70,13 +73,13 @@ const Account = () => {
             <View style={styles.detailsContainer}>
                 <View style={styles.detailsBlock}>
                     <ELearningText text="Name" preset="semiBold" size={16} />
-                    <ELearningText text="ABC" />
+                    <ELearningText text={userStore.userName || "Anonymous"} />
                     <Divider style={styles.divider} />
                 </View>
 
                 <View style={[styles.detailsBlock, styles.detailsSpacing]}>
                     <ELearningText text="Email" preset="semiBold" size={16} />
-                    <ELearningText text="xyz.com" />
+                    <ELearningText text={userStore.userEmail || "AnonymousEmail@gmail.com"} />
                     <Divider style={styles.divider} />
                 </View>
             </View>
@@ -99,7 +102,7 @@ const Account = () => {
     );
 };
 
-export default Account;
+export default observer(Account);
 
 const styles = StyleSheet.create({
     container: {

@@ -52,9 +52,7 @@ const navigation = useNavigation();
     <View style={{  top: inset.top, marginHorizontal: 18, marginBottom: '20%'}}>
       <View>
         <ELearningAuthHeader
-          ctaText="Sign In"
           onClose={onClose}
-          onCtaClick={() => navigation.navigate(ESCREEN.BOTTOM_NAVIGATION)}
         />
       </View>
 
@@ -116,7 +114,7 @@ const navigation = useNavigation();
 
                 <View style={[styles.ctaContainer, { marginBottom: 32 }]}>
                     <ELearningText
-                        text="We mever share anything on your behalf"
+                        text="We never share anything on your behalf"
                         preset="medium"
                         size={12}
                     />

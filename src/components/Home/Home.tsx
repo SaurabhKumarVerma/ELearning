@@ -1,6 +1,6 @@
 import { ActivityIndicator, FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import React, { useEffect } from "react";
-import { useTheme } from "@rneui/themed";
+import { Avatar, useTheme } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import { ESCREEN } from "@eLearning/types/screenName";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -67,6 +67,18 @@ const Home = () => {
     )
   }
 
+  const userAccountIcon = () => {
+    return (
+      <TouchableOpacity onPress={() => navigate(ESCREEN.ACCOUNT_SCREEN)}>
+        <Avatar
+    size={40}
+    rounded
+    source={{ uri: "https://randomuser.me/api/portraits/men/34.jpg" }}
+  />
+      </TouchableOpacity>
+    )
+  }
+
   return (
     <View style={{ top: top, flex: 1 }}>
       <View style={{ marginHorizontal: 12, marginVertical: 4 }}>
@@ -75,11 +87,13 @@ const Home = () => {
           headerText="Home"
           headerContainerStyle={{
             flexDirection: "row",
-            alignSelf: "center",
+            alignItems: 'center',
+            justifyContent: 'space-between',
             marginBottom: 12,
           }}
           textStyle={{ fontSize: 18 }}
           textPreset="semiBold"
+          rightIcon={userAccountIcon()}
         />
         <Divider />
       </View>

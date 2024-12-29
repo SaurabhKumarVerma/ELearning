@@ -61,7 +61,7 @@ const ELearningLoadingButton: React.FC<ILoadingButtonProps> = ({
                 <View style={styles.content}>
                     {icon && <View style={[styles.iconContainer, iconStyle]}>{icon}</View>}
                     <ELearningText
-                        style={[textStyle]}
+                        style={[textStyle ?? styles.default]}
                         text={label}
                         preset={textPresets}
                         size={textSize}
@@ -91,6 +91,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    default: {
+        color: color.whisperWhite
+    }
 });
 
 export default ELearningLoadingButton;

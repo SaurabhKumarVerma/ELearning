@@ -118,7 +118,7 @@ const Login = () => {
 
                 <View style={[styles.ctaContainer, { marginBottom: 32 }]}>
                     <ELearningText
-                        text="We mever share anything on your behalf"
+                        text="We never share anything on your behalf"
                         preset="medium"
                         size={12}
                     />

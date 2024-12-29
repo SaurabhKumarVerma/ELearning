@@ -10,5 +10,6 @@ export const enum ESCREEN {
     COURSE_DETAIL = 'CourseDetail',
     ENROLLED_SCREEN = 'Enrolled',
     BOTTOM_NAVIGATION = 'BottomNavigation',
-    AUTHENTICATION_SCREEN = 'AuthScreen'
+    AUTHENTICATION_SCREEN = 'AuthScreen',
+    ACCOUNT_SCREEN = 'AccountScreen'
 }

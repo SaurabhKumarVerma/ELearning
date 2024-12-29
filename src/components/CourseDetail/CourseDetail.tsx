@@ -151,7 +151,6 @@ const CourseDetail = () => {
             {
                 !enrolledStore.enrolledList.has(route?.params?.courseId) ? (
                     <ELearningLoadingButton
-                    
                 isLoading={false}
                 handlePress={enrolledUser}
                 label="Enroll Course"

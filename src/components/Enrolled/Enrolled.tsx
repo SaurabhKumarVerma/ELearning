@@ -16,6 +16,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Divider } from "@rneui/themed";
 import LottieView from "lottie-react-native";
 import ELearningText from "@eLearning/base/ELearningText/ELearningText";
+import { ESCREEN } from "@eLearning/types/screenName";
 
 const Enrolled = () => {
   const { top } = useSafeAreaInsets();

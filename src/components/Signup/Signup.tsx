@@ -23,7 +23,7 @@
  * This component is intended for use as part of the authentication flow in 
  * the application, allowing new users to create an account.
  */
-import { Alert, Appearance, StyleSheet,View } from "react-native";
+import { ActivityIndicator, Alert, Appearance, StyleSheet,View } from "react-native";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
@@ -51,15 +51,16 @@ const navigation = useNavigation();
       : Appearance.setColorScheme(MODE.DARK);
   };
 
-  const  onGoogleButtonPress = async () => {
-    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-    const signInResult = await GoogleSignin.signIn();
-    const idToken = signInResult?.idToken;
-    if (!idToken) {
-     console.log('No ID token found');
-    }
-    const googleCredential = auth.GoogleAuthProvider.credential(signInResult.data?.token);
-    return auth().signInWithCredential(googleCredential);
+  const onGoogleSignIn = () => {
+    userStore.onGoogleButtonPress()
+  }
+
+  if(userStore.isLoading){
+    return (
+          <View style={{ flex: 1, justifyContent: "center" }}>
+            <ActivityIndicator size={"small"} />
+          </View>
+        );
   }
 
 
@@ -177,7 +178,7 @@ const navigation = useNavigation();
                     }
                     buttonBackgroundColor={color.crimsonRed}
                     isLoading={false}
-                    handlePress={onGoogleButtonPress}
+                    handlePress={onGoogleSignIn}
                     label="Continue With Google"
                     textPresets="medium"
                     textStyle={{ color: color.whisperWhite }}

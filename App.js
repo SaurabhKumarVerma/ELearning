@@ -40,7 +40,7 @@ const App = () => {
 
 
   useEffect(() => {
-    if (loaded || error) {
+    if (loaded || error || navigationRef.isReady()) {
       SplashScreen.hideAsync();
     }
   }, [loaded, error]);
@@ -59,7 +59,7 @@ const App = () => {
       <StatusBar hidden/>
       <SafeAreaProvider >
       <ThemeProvider theme={themeConfig}>
-        <Main />
+        <Main  ref={navigationRef}/>
       </ThemeProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>

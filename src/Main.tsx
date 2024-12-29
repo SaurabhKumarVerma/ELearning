@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { withTheme } from '@rneui/themed';
 import StackNavigator from './navigations/StackNavigation/HomeStack';
 import RatingModal from './components/RatingModal/RatingModal';
+import { NavigationContainerRef } from '@react-navigation/native';
 
-// Main component that sets up the navigation container and includes the stack navigator and rating modal
-const Main = () => {
+const Main = forwardRef((props, ref: React.ForwardedRef<NavigationContainerRef<any>>) => {
+
   return (
     <NavigationContainer
+      ref={ref}
     >
       <StackNavigator />
       <RatingModal />
     </NavigationContainer>
-  )
-}
+  );
+});
 
-export default withTheme(Main)
+export default withTheme(Main);

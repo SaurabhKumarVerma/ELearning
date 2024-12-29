@@ -26,6 +26,7 @@
  * the application, allowing users to log in to their accounts.
  */
 import {
+    ActivityIndicator,
     Alert,
     StyleSheet,
     TouchableOpacity,
@@ -50,19 +51,6 @@ const Login = () => {
     const inset = useSafeAreaInsets();
     const navigation = useNavigation();
     const { userStore } = useStore()
-
-    const onGoogleButtonPress = async () => {
-        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-        const signInResult = await GoogleSignin.signIn();
-        const idToken = signInResult?.idToken;
-        if (!idToken) {
-            console.log('No ID token found');
-            const googleCredential = auth.GoogleAuthProvider.credential(signInResult.data?.token);
-            return auth().signInWithCredential(googleCredential);
-        }
-        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-        return auth().signInWithCredential(googleCredential);
-    };
 
     const onClose = () =>
         Alert.alert('Are you sure ', '', [
@@ -101,6 +89,19 @@ const Login = () => {
             )
         }
     }
+
+    const onGoogleSignIn = () => {
+        userStore.onGoogleButtonPress()
+    }
+
+    if (userStore.isLoading) {
+        return (
+            <View style={{ flex: 1, justifyContent: "center",  }}>
+                <ActivityIndicator size={"small"} />
+            </View>
+        );
+    }
+
 
     return (
         <View style={{ top: inset.top, marginHorizontal: 18, marginBottom: '20%' }}>
@@ -181,7 +182,7 @@ const Login = () => {
                     }
                     buttonBackgroundColor={color.crimsonRed}
                     isLoading={false}
-                    handlePress={onGoogleButtonPress}
+                    handlePress={onGoogleSignIn}
                     label="Continue With Google"
                     textPresets="medium"
                     textStyle={{ color: color.whisperWhite }}

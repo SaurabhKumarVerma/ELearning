@@ -2,6 +2,9 @@ import { action, observable } from "mobx";
 import RootStore from "./rootStore";
 import { IUserModel } from "@eLearning/models/user.model";
 import { ESCREEN } from "@eLearning/types/screenName";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import auth from '@react-native-firebase/auth';
+import { replace } from "@eLearning/navigations/Rootnavigation";
 
 export class UserStore implements IUserModel {
     rootStore: typeof RootStore; // Reference to the RootStore
@@ -12,6 +15,8 @@ export class UserStore implements IUserModel {
     @observable password: string = undefined;
     @observable isShownOnboardingFlow: boolean = false;
     @observable isLoginErrorStatus: boolean = false;
+    @observable isLoading: boolean = false
+    @observable userImage: string = undefined;
 
     constructor(rootStore: typeof RootStore) {
         this.rootStore = rootStore;
@@ -24,15 +29,11 @@ export class UserStore implements IUserModel {
 
     @action
     getUserEmail(email: string) {
-        console.log("email", email);
-        
         this.userEmail = email;
     }
 
     @action
     getUserPassword(password: string) {
-        console.log("passowrd", password);
-        
         this.password = password;
     }
 
@@ -41,6 +42,51 @@ export class UserStore implements IUserModel {
         this.isLoginErrorStatus = status;
     }
 
-    
+    @action
+    onLoading(status: boolean){
+        this.isLoading = status
+    }
+
+    @action
+    onUserImage(img:string){
+        this.userImage = img
+    }
+
+    onGoogleButtonPress = async () => {
+        this.onLoading(true)
+        try {
+            await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+            const signInResult = await GoogleSignin.signIn();
+            if (signInResult?.data?.idToken) {
+                const googleCredential = auth.GoogleAuthProvider.credential(signInResult.data?.idToken);
+                const data = await auth().signInWithCredential(googleCredential);
+               
+                
+                if (data) {
+                    const email = signInResult?.data?.user?.email;
+                    const name = signInResult?.data?.user?.name;
+                    const img = signInResult.data.user.photo
+
+                    if (email) this.getUserEmail(email);
+                    if (name) this.getUserName(name);
+                    if(img) this.onUserImage(img)
+
+                    replace(ESCREEN.BOTTOM_NAVIGATION, {
+                        screen: ESCREEN.HOME_SCREEN
+                    })
+                    this.onLoading(false)
+                }
+            } else {
+                console.log('No ID token found');
+                this.onLoading(false)
+                return
+            }
+        } catch (error) {
+            console.error('Google Sign-In error:');
+            this.onLoading(false)
+            return
+        }
+    };
+
     onSignup: () => void;
 }

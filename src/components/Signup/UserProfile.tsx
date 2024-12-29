@@ -22,15 +22,17 @@
  * picture.
  */
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import * as ImagePicker from "expo-image-picker";
 import ELearningImage from "@eLearning/base/ELearningImage/ELearningImage";
 import { images } from "assets/image";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { color } from "@eLearning/theme/color";
+import { observer } from "mobx-react";
+import { useStore } from "@eLearning/store/StoreContext";
 
 const UserProfile = () => {
-    const [image, setImage] = useState<string | null>(null);
+    const {userStore} = useStore()
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -41,7 +43,7 @@ const UserProfile = () => {
         });
 
         if (!result.canceled) {
-            setImage(result.assets[0].uri);
+            userStore.onUserImage(result.assets[0].uri);
         }
     };
 
@@ -49,7 +51,7 @@ const UserProfile = () => {
         <TouchableOpacity onPress={pickImage} style={styles.container}>
             <ELearningImage
                 imageData={{
-                    source: image || images.dummyUser,
+                    source: userStore.userImage || images.dummyUser,
                     contentFit: 'cover',
                     style: { width: 100, height: 100, borderRadius: 50, },
                 }}
@@ -61,7 +63,7 @@ const UserProfile = () => {
     );
 };
 
-export default UserProfile;
+export default observer(UserProfile);
 
 const styles = StyleSheet.create({
     container: {

@@ -57,6 +57,8 @@ const CourseDetail = () => {
         );
     };
 
+    console.log(enrolledStore.enrolledList)
+
     const onFullScreenExit = () => {
         courseStore.showRatingModel();
     };
@@ -145,7 +147,11 @@ const CourseDetail = () => {
                     </View>
                 </View>
             </ScrollView>
-            <ELearningLoadingButton
+
+            {
+                !enrolledStore.enrolledList.has(route?.params?.courseId) ? (
+                    <ELearningLoadingButton
+                    
                 isLoading={false}
                 handlePress={enrolledUser}
                 label="Enroll Course"
@@ -162,6 +168,9 @@ const CourseDetail = () => {
                     />
                 }
             />
+                ) : null
+            }
+            
         </View>
     );
 };

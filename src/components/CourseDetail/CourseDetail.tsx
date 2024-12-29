@@ -56,7 +56,6 @@ const CourseDetail = () => {
             </TouchableOpacity>
         );
     };
-    console.log("this is ", courseStore.courseDetailData[0]?.isCourseEnrolled);
 
     const onFullScreenExit = () => {
         courseStore.showRatingModel();

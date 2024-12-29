@@ -12,6 +12,7 @@ import { StatusBar } from 'expo-status-bar';
 import { MODE } from '@eLearning/types/types';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { StoreProvider } from '@eLearning/store/StoreProvider';
+import { navigationRef } from '@eLearning/navigations/Rootnavigation';
 
 GoogleSignin.configure({
   webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
@@ -40,7 +41,7 @@ const App = () => {
     }
   }, [loaded, error]);
 
-  if (!loaded && !error) {
+  if (!loaded && !error && navigationRef.isReady()) {
     return null;
   }
 

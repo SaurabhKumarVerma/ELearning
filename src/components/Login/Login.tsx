@@ -1,4 +1,5 @@
 import {
+    Alert,
     Appearance,
     ScrollView,
     StyleSheet,
@@ -18,15 +19,11 @@ import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useNavigation } from "@react-navigation/native";
 import { ESCREEN } from "@eLearning/types/screenName";
+import { navigationRef, replace } from "@eLearning/navigations/Rootnavigation";
 
 const Login = () => {
     const inset = useSafeAreaInsets();
  const navigation = useNavigation();
-    const toggleDarkMode = () => {
-        Appearance.getColorScheme() === MODE.DARK
-            ? Appearance.setColorScheme(MODE.LIGHT)
-            : Appearance.setColorScheme(MODE.DARK);
-    };
 
  const  onGoogleButtonPress = async () => {
         await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
@@ -41,12 +38,25 @@ const Login = () => {
         return auth().signInWithCredential(googleCredential);
     };
 
+    const onClose = () =>
+        Alert.alert('Are you sure ', '', [
+          {
+            text: 'Cancel',
+            onPress: () => console.log(),
+            style: 'cancel',
+          },
+          {text: 'OK', onPress: () => navigation.reset({
+            index:0,
+            routes: [{ name: ESCREEN.BOTTOM_NAVIGATION }],
+          })},
+        ]);
+
     return (
         <View style={{ top: inset.top, marginHorizontal: 18, marginBottom: '20%' }}>
             <View>
                 <ELearningAuthHeader
                     ctaText="Sign Up"
-                    onClose={toggleDarkMode}
+                    onClose={onClose}
                     onCtaClick={() => navigation.navigate(ESCREEN.SIGNUP_SCREEN)}
                 />
             </View>

@@ -31,9 +31,3 @@ export function pop(count: number = 1): void {
     navigationRef.dispatch(StackActions.pop(count))
   }
 }
-
-// export function reset(index: number, routes: Array<{ name: string; params?: object }>): void {
-//   if (navigationRef.isReady()) {
-//     navigationRef.dispatch(StackActions.replace(name, ));
-//   }
-// }

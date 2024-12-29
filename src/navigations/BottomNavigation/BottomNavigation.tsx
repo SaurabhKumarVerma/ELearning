@@ -17,6 +17,7 @@ const BottomNavigation = () => {
       id={undefined}
       screenOptions={{ headerShown: false }}
       tabBar={CustomBottomTabs}
+      initialRouteName={ESCREEN.HOME_SCREEN}
     >
       <Tabs.Screen name={ESCREEN.HOME_SCREEN} component={HomeScreen} />
       <Tabs.Screen name={ESCREEN.ENROLLED_SCREEN} component={EnrolledScreen} />

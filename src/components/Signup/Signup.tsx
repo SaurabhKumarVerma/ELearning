@@ -1,4 +1,4 @@
-import { Appearance, StyleSheet,View } from "react-native";
+import { Alert, Appearance, StyleSheet,View } from "react-native";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
@@ -35,12 +35,25 @@ const navigation = useNavigation();
   }
 
 
+  const onClose = () =>
+          Alert.alert('Are you sure ', '', [
+            {
+              text: 'Cancel',
+              onPress: () => console.log(),
+              style: 'cancel',
+            },
+            {text: 'OK', onPress: () => navigation.reset({
+              index:0,
+              routes: [{ name: ESCREEN.BOTTOM_NAVIGATION }],
+            })},
+          ]);
+
   return (
     <View style={{  top: inset.top, marginHorizontal: 18, marginBottom: '20%'}}>
       <View>
         <ELearningAuthHeader
           ctaText="Sign In"
-          onClose={toggleDarkMode}
+          onClose={onClose}
           onCtaClick={() => navigation.navigate(ESCREEN.BOTTOM_NAVIGATION)}
         />
       </View>

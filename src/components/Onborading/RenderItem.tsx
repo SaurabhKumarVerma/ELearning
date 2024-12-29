@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginTop: 50,
+    marginHorizontal: 4
   },
   description: {
     color: color.grayishBlue,

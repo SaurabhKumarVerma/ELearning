@@ -15,6 +15,7 @@ import { BOTTOM_BAR_HEIGHT } from "@eLearning/constant/constant";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Divider } from "@rneui/themed";
 import LottieView from "lottie-react-native";
+import ELearningText from "@eLearning/base/ELearningText/ELearningText";
 
 const Enrolled = () => {
   const { top } = useSafeAreaInsets();
@@ -62,6 +63,7 @@ const Enrolled = () => {
         }}
         source={require('../../../assets/lottie/noData.json')}
       />
+      <ELearningText preset="semiBold" style={{textAlign: 'center'}} text={"No Enrolled Course"}/>
       </View>
     );
   };

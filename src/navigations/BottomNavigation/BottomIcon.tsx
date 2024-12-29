@@ -61,7 +61,7 @@ const BottomIcon = (props: IBottomIcon) => {
         <Animated.View style={styles.container}>
           <Ionicons
             name={routeName(props.routeName) as any}
-            size={30}
+            size={20}
             color={iconColor(props.isFocused)}
           />
         </Animated.View>
@@ -71,7 +71,6 @@ const BottomIcon = (props: IBottomIcon) => {
             preset="medium"
             style={{
               color: iconColor(props.isFocused),
-              // color: props.isFocused ? color.selectedColor : color.mediumGray,
               fontSize: 12,
               fontWeight: "700",
               overflow: "hidden",

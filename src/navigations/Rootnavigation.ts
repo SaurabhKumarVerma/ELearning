@@ -79,3 +79,12 @@ export function pop(count: number = 1): void {
     navigationRef.dispatch(StackActions.pop(count))
   }
 }
+
+export function reset(routes, index = 0) {
+  if (navigationRef.isReady()) {
+    navigationRef.reset({
+      index,
+      routes: routes.map((route) => ({ name: route.name, params: route.params })),
+    });
+  }
+}

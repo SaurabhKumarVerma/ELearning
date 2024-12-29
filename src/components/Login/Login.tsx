@@ -43,19 +43,22 @@ import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useNavigation } from "@react-navigation/native";
 import { ESCREEN } from "@eLearning/types/screenName";
+import { observer } from "mobx-react";
+import { useStore } from "@eLearning/store/StoreContext";
 
 const Login = () => {
     const inset = useSafeAreaInsets();
- const navigation = useNavigation();
+    const navigation = useNavigation();
+    const { userStore } = useStore()
 
- const  onGoogleButtonPress = async () => {
+    const onGoogleButtonPress = async () => {
         await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
         const signInResult = await GoogleSignin.signIn();
         const idToken = signInResult?.idToken;
         if (!idToken) {
-         console.log('No ID token found');
-        const googleCredential = auth.GoogleAuthProvider.credential(signInResult.data?.token);
-        return auth().signInWithCredential(googleCredential);
+            console.log('No ID token found');
+            const googleCredential = auth.GoogleAuthProvider.credential(signInResult.data?.token);
+            return auth().signInWithCredential(googleCredential);
         }
         const googleCredential = auth.GoogleAuthProvider.credential(idToken);
         return auth().signInWithCredential(googleCredential);
@@ -63,16 +66,41 @@ const Login = () => {
 
     const onClose = () =>
         Alert.alert('Are you sure ', '', [
-          {
-            text: 'Cancel',
-            onPress: () => console.log(),
-            style: 'cancel',
-          },
-          {text: 'OK', onPress: () => navigation.reset({
-            index:0,
-            routes: [{ name: ESCREEN.BOTTOM_NAVIGATION }],
-          })},
+            {
+                text: 'Cancel',
+                onPress: () => console.log(),
+                style: 'cancel',
+            },
+            {
+                text: 'OK', onPress: () => navigation.reset({
+                    index: 0,
+                    routes: [{ name: ESCREEN.BOTTOM_NAVIGATION }],
+                })
+            },
         ]);
+
+    const onLogin = () => {
+
+        if (userStore.userEmail && userStore.password) {
+            navigation.reset({
+                index: 0,
+                routes: [{ name: ESCREEN.BOTTOM_NAVIGATION }],
+            })
+
+        };
+
+        if (!userStore.userEmail || !userStore.password) {
+            return (
+                Alert.alert(`Invalid email or password`, '', [
+                    {
+                        text: 'Okay',
+                        onPress: () => console.log(),
+                        style: 'cancel',
+                    },
+                ])
+            )
+        }
+    }
 
     return (
         <View style={{ top: inset.top, marginHorizontal: 18, marginBottom: '20%' }}>
@@ -101,18 +129,18 @@ const Login = () => {
 
             <View style={styles.credentialContainer}>
                 <ELearningTextInput
-                    inputText={""}
+                    inputText={userStore.userEmail}
                     placeholder="Enter email"
-                    inputProps={{inputMode: 'email', keyboardType: 'email-address'}}
-                    onChangeText={(text: string) => { }}
+                    inputProps={{ inputMode: 'email', keyboardType: 'email-address' }}
+                    onChangeText={(text: string) => userStore.getUserEmail(text)}
                 />
 
                 <View style={{ marginTop: "6%" }}>
                     <ELearningTextInput
                         placeholder="Password"
                         secureTextEntry
-                        inputText={""}
-                        onChangeText={(text: string) => { }}
+                        inputText={userStore.password}
+                        onChangeText={(text: string) => userStore.getUserPassword(text)}
                     />
 
                     <TouchableOpacity>
@@ -128,7 +156,7 @@ const Login = () => {
                 <View style={{ marginTop: 36 }}>
                     <ELearningLoadingButton
                         isLoading={false}
-                        handlePress={() => console.log("clec")}
+                        handlePress={onLogin}
                         label="Sign In"
                         textPresets="medium"
                         textStyle={{ color: color.whisperWhite }}
@@ -163,7 +191,7 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default observer(Login);
 
 const styles = StyleSheet.create({
     titleContainer: {

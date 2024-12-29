@@ -38,9 +38,12 @@ import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useNavigation } from "@react-navigation/native";
 import { ESCREEN } from "@eLearning/types/screenName";
+import { useStore } from "@eLearning/store/StoreContext";
+import { observer } from "mobx-react";
 
 const Signup = () => {
   const inset = useSafeAreaInsets();
+  const { userStore } = useStore()
 const navigation = useNavigation();
   const toggleDarkMode = () => {
     Appearance.getColorScheme() === MODE.DARK
@@ -73,6 +76,29 @@ const navigation = useNavigation();
             })},
           ]);
 
+  const onSignup = () => {
+  
+          if (userStore.userEmail && userStore.password) {
+              navigation.reset({
+                  index: 0,
+                  routes: [{ name: ESCREEN.BOTTOM_NAVIGATION }],
+              })
+  
+          };
+  
+          if (!userStore.userEmail || !userStore.password) {
+              return (
+                  Alert.alert(`Invalid email or password`, '', [
+                      {
+                          text: 'Okay',
+                          onPress: () => console.log(),
+                          style: 'cancel',
+                      },
+                  ])
+              )
+          }
+      }
+
   return (
     <View style={{  top: inset.top, marginHorizontal: 18, marginBottom: '20%'}}>
       <View>
@@ -103,30 +129,30 @@ const navigation = useNavigation();
       <View style={{ marginTop: 32 }}>
         <ELearningTextInput
           placeholder="Enter Full Name"
-          inputText={""}
+          inputText={userStore.userName}
           inputProps={{ inputMode: "text" }}
-          onChangeText={(text: string) => { }}
+          onChangeText={(text: string) => userStore.getUserName(text)}
         />
         <View style={{marginVertical: 20}}>
         <ELearningTextInput
           placeholder="Enter email address"
-          inputText={""}
+          inputText={userStore.userEmail}
           inputProps={{ inputMode: "email", keyboardType: "email-address" }}
-          onChangeText={(text: string) => { }}
+          onChangeText={(text: string) => userStore.getUserEmail(text)}
         />
         </View>
         <ELearningTextInput
           placeholder="Password"
           secureTextEntry
-          inputText={""}
-          onChangeText={(text: string) => { }}
+          inputText={userStore.password}
+          onChangeText={(text: string) => userStore.getUserPassword(text)}
         />
       </View>
 
       <View style={{ marginTop: 36 }}>
                     <ELearningLoadingButton
                         isLoading={false}
-                        handlePress={() => console.log("clec")}
+                        handlePress={onSignup}
                         label="Sign Up"
                         textPresets="medium"
                         textStyle={{ color: color.whisperWhite }}
@@ -160,7 +186,7 @@ const navigation = useNavigation();
   );
 };
 
-export default Signup;
+export default observer(Signup);
 
 const styles = StyleSheet.create({
   titleContainer: {

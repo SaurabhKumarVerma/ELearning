@@ -32,7 +32,7 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningText from "@eLearning/base/ELearningText/ELearningText";
@@ -46,11 +46,16 @@ import { useNavigation } from "@react-navigation/native";
 import { ESCREEN } from "@eLearning/types/screenName";
 import { observer } from "mobx-react";
 import { useStore } from "@eLearning/store/StoreContext";
+import { setItem } from "@eLearning/service/storageService/storage.service";
 
 const Login = () => {
     const inset = useSafeAreaInsets();
     const navigation = useNavigation();
     const { userStore } = useStore()
+
+    useEffect(() => {
+        setItem('onboarding-shown', true)
+    },[])
 
     const onClose = () =>
         Alert.alert('Are you sure ', '', [

@@ -26,25 +26,40 @@
  * navigation structure, specifically for managing user authentication flows.
  */
 import { StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { ESCREEN } from '@eLearning/types/screenName'
 import OnboardingScreen from '@eLearning/screen/OnboardingScreen/OnboardingScreen'
 import LoginScreen from '@eLearning/screen/LoginScreen/LoginScreen'
 import SignupScreen from '@eLearning/screen/SignupScreen/SignupScreen'
+import { useStore } from '@eLearning/store/StoreContext'
+import { observer } from 'mobx-react'
 
 const Stack = createNativeStackNavigator()
 
 const AuthNavigator = () => {
+  const {userStore} = useStore()
+  const [state, setState] = useState<boolean>()
+
+  
+  useLayoutEffect(() => {
+  const value =   userStore.shownOnboardingValue()
+  setState(value)
+  },[])
+  
   return (
     <Stack.Navigator id={undefined} screenOptions={{ headerShown: false, gestureEnabled: true }}>
-    <Stack.Screen name={ESCREEN.ONBOARDING} component={OnboardingScreen}/>
+      {
+        !state? (
+          <Stack.Screen name={ESCREEN.ONBOARDING} component={OnboardingScreen}/>
+        ) : null
+      }
     <Stack.Screen name={ESCREEN.LOGIN_SCREEN} component={LoginScreen} />
     <Stack.Screen name={ESCREEN.SIGNUP_SCREEN} component={SignupScreen} />
   </Stack.Navigator>
   )
 }
 
-export default AuthNavigator
+export default observer(AuthNavigator)
 
 const styles = StyleSheet.create({})

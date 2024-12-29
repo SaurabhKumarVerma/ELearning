@@ -23,19 +23,16 @@
  * This component is intended for use as part of the authentication flow in 
  * the application, allowing new users to create an account.
  */
-import { ActivityIndicator, Alert, Appearance, StyleSheet,View } from "react-native";
+import { ActivityIndicator, Alert, StyleSheet,View } from "react-native";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
 import ELearningText from "@eLearning/base/ELearningText/ELearningText";
-import { MODE } from "@eLearning/types/types";
 import UserProfile from "./UserProfile";
 import ELearningTextInput from "@eLearning/base/ELearningTextInput/ELearningTextInput";
 import ELearningLoadingButton from "@eLearning/base/ELearningButton/ELearningButton";
 import { color } from "@eLearning/theme/color";
 import { AntDesign } from "@expo/vector-icons";
-import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useNavigation } from "@react-navigation/native";
 import { ESCREEN } from "@eLearning/types/screenName";
 import { useStore } from "@eLearning/store/StoreContext";
@@ -45,11 +42,7 @@ const Signup = () => {
   const inset = useSafeAreaInsets();
   const { userStore } = useStore()
 const navigation = useNavigation();
-  const toggleDarkMode = () => {
-    Appearance.getColorScheme() === MODE.DARK
-      ? Appearance.setColorScheme(MODE.LIGHT)
-      : Appearance.setColorScheme(MODE.DARK);
-  };
+
 
   const onGoogleSignIn = () => {
     userStore.onGoogleButtonPress()

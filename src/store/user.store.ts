@@ -5,6 +5,7 @@ import { ESCREEN } from "@eLearning/types/screenName";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import auth from '@react-native-firebase/auth';
 import { replace } from "@eLearning/navigations/Rootnavigation";
+import { getBooleanItem } from "@eLearning/service/storageService/storage.service";
 
 export class UserStore implements IUserModel {
     rootStore: typeof RootStore; // Reference to the RootStore
@@ -50,6 +51,12 @@ export class UserStore implements IUserModel {
     @action
     onUserImage(img:string){
         this.userImage = img
+    }
+
+    @action
+    shownOnboardingValue(){
+        this.isShownOnboardingFlow = getBooleanItem('onboarding-shown');
+        return this.isShownOnboardingFlow
     }
 
     onGoogleButtonPress = async () => {

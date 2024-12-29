@@ -1,3 +1,32 @@
+
+/**
+ * ELearningLoadingButton Component
+ * 
+ * A button component that displays a loading indicator when an action is in progress.
+ * Props:
+ * - @textPresets (Preset): Optional preset style for the button text. Defaults to "regular".
+ * - @textSize (number): Optional size for the button text. Defaults to 18.
+ * - @label (string): The text to be displayed on the button.
+ * - @style (StyleProp<ViewStyle>): Optional additional styles for the button container.
+ * - @textStyle (StyleProp<TextStyle>): Optional additional styles for the button text.
+ * - @handlePress (function): A callback function to be called when the button is pressed.
+ * - @isLoading (boolean): A flag indicating whether the button is in a loading state. If true, the button
+ *   @will display a loading indicator instead of the label.
+ * - @icon (ReactNode): Optional icon to be displayed alongside the button label.
+ * - @iconStyle (StyleProp<ViewStyle>): Optional additional styles for the icon container.
+ * - @buttonBackgroundColor (string): Optional background color for the button. If not provided, the
+ *   @background color will be determined based on the current theme (dark or light).
+ * 
+ * 
+ * The button will display the provided label and icon when not loading. When the `isLoading` prop
+ * is set to true, the button will show an ActivityIndicator instead of the label, indicating to the
+ * user that an action is in progress. The button is also disabled during loading to prevent multiple
+ * presses.
+ * 
+ * The component uses the `useTheme` hook from RNEUI to apply theming, allowing for consistent styling
+ * across the application based on the current theme mode (dark or light).
+ */
+
 import React, { ReactNode } from "react";
 import {
     StyleSheet,

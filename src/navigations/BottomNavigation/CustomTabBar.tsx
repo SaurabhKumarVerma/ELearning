@@ -1,4 +1,34 @@
 /* eslint-disable react-native/no-inline-styles */
+/**
+ * CustomBottomTabBar Component
+ * 
+ * This component serves as a custom bottom tab bar for navigation within the 
+ * application. It displays a series of icons representing different routes 
+ * and allows users to navigate between them. The tab bar adapts its appearance 
+ * based on the current theme (light or dark mode).
+ * 
+ * Props:
+ * - state (BottomTabState): The current state of the bottom tab navigator, 
+ *   including the active route and available routes.
+ * - descriptors (BottomTabDescriptorMap): An object containing the route 
+ *   descriptors, which provide options and properties for each route.
+ * - navigation (BottomTabNavigationProp): The navigation prop used to 
+ *   navigate between routes.
+ * 
+ * Key Features:
+ * - Renders a series of `BottomIcon` components for each route in the tab 
+ *   navigator, indicating the current active route with visual feedback.
+ * - Handles press and long press events on each tab to navigate to the 
+ *   corresponding route or trigger additional actions.
+ * - Dynamically sets the background color of the tab bar based on the current 
+ *   theme (light or dark mode).
+ * - Utilizes accessibility properties to enhance usability for screen readers.
+ * 
+ * Usage:
+ * This component is intended to be used as a replacement for the default 
+ * bottom tab bar provided by React Navigation, allowing for a customized 
+ * appearance and behavior.
+ */
 import { StyleSheet, View, Pressable } from "react-native"
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs"
 import BottomIcon from "./BottomIcon"

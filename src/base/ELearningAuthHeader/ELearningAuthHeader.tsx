@@ -6,28 +6,38 @@ import { color } from '@eLearning/theme/color';
 import { useTheme } from '@rneui/themed';
 import { MODE } from '@eLearning/types/types';
 
+// Interface defining the props for the ELearningAuthHeader component
 interface IELearningAuthHeader {
-    onClose: () => void
-    onCtaClick?: () => void
-    ctaText?: string
+  onClose: () => void; // Callback function to be executed when the close button is pressed
+  onCtaClick?: () => void; // Optional callback function for the call-to-action button
+  ctaText?: string; // Optional text to be displayed on the call-to-action button
 }
 
 const ELearningAuthHeader = (props: IELearningAuthHeader) => {
+  // Retrieve the current theme context using the useTheme hook
     const {theme} = useTheme()
-    const iconColor = theme.mode === MODE.DARK ? color.whisperWhite : color.blackForestGreen
+    // Determine the color of the icon based on the current theme mode (dark or light)
+    const iconColor = theme.mode === MODE.DARK ? color.whisperWhite : color.blackForestGreen;
+
   return (
     <View style={styles.container}>
         <TouchableOpacity onPress={props.onClose}>
         <Entypo name="cross" size={24} color={iconColor} />
         </TouchableOpacity>
-      {
-        props.ctaText ? (
-          <TouchableOpacity onPress={props.onCtaClick}>
-        <ELearningText text={props.ctaText} preset='semiBold' size={16} style={styles.textColor}/>
-      </TouchableOpacity>
-        ) : null
-      }
-      
+        {
+                // Conditionally render the call-to-action button if ctaText is provided
+                props.ctaText ? (
+                    <TouchableOpacity onPress={props.onCtaClick}>
+                        {/* ELearningText component to display the call-to-action text */}
+                        <ELearningText 
+                            text={props.ctaText} 
+                            preset='semiBold' 
+                            size={16} 
+                            style={styles.textColor} 
+                        />
+                    </TouchableOpacity>
+                ) : null // If no ctaText is provided, render nothing
+            }
     </View>
   )
 }

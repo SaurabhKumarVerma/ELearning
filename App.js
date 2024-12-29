@@ -14,13 +14,15 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { StoreProvider } from '@eLearning/store/StoreProvider';
 import { navigationRef } from '@eLearning/navigations/Rootnavigation';
 
+// Configure Google Sign-In with web client ID
 GoogleSignin.configure({
   webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
 });
-
+// Prevent the splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync();
 
 const App = () => {
+   // Load custom fonts
   const [loaded, error] = useFonts({
     ...vectorFonts,
     'poppinsBlack': require('./assets/fonts/Poppins-Black.ttf'),
@@ -31,6 +33,8 @@ const App = () => {
     'poppinsSemiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
     'poppinsThin': require('./assets/fonts/Poppins-Thin.ttf')
   });
+
+  // Get the current color scheme (light or dark mode)
   const colorScheme = useColorScheme();
   themeConfig.mode = colorScheme;
 
@@ -41,13 +45,15 @@ const App = () => {
     }
   }, [loaded, error]);
 
-  if (!loaded && !error && navigationRef.isReady()) {
+  // Return null if fonts are not loaded and there's no error, and navigation is not ready
+  if (!loaded && !error && !navigationRef.isReady()) {
     return null;
   }
 
 
 
   return (
+    // Provide the store context to the app
     <StoreProvider>
     <GestureHandlerRootView style={{flex: 1,}}>
       <StatusBar hidden/>

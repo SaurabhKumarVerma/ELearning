@@ -1,3 +1,17 @@
+/**
+ * ICourse Interface
+ * 
+ * This interface defines the structure of a course object within the 
+ * application. It outlines the properties that a course must have, 
+ * providing a clear contract for course data management.
+ *
+ * ICourseService Interface
+ * 
+ * This interface defines the structure for a service that manages 
+ * course-related operations within the application. It outlines the 
+ * methods that must be implemented to handle course data retrieval and 
+ * user interactions.
+ */
 export interface ICourse {
   id: string;
   sku: string;

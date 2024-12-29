@@ -1,3 +1,22 @@
+/**
+ * RatingModal Component
+ * 
+ * This component presents a modal for users to rate a course using a slider. 
+ * It displays corresponding emojis and text based on the selected rating. 
+ * The modal allows users to provide feedback on their session and includes 
+ * a button to submit their rating.
+ * 
+ * Key Features:
+ * - Utilizes a slider to allow users to select a rating value between 0 and 100.
+ * - Displays a set of emojis that represent different levels of satisfaction, 
+ *   updating dynamically based on the slider's value.
+ * - Uses animations to enhance the user experience, including scaling the emoji 
+ *   based on the selected rating.
+ * - Integrates with MobX for state management, allowing the modal to open and 
+ *   close based on the application's state.
+ * - Adapts its appearance based on the current theme (light or dark mode).
+ * - Provides a "Continue" button to close the modal after rating is submitted.
+ */
 import { StyleSheet, Modal, View } from "react-native";
 import React, { useRef, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

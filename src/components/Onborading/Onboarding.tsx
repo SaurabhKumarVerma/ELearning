@@ -1,3 +1,29 @@
+/**
+ * Onboarding Component
+ * 
+ * This component provides an onboarding experience for new users, guiding them 
+ * through a series of introductory screens. It utilizes horizontal scrolling to 
+ * navigate between different onboarding items and includes a sign-in option 
+ * for users at the end of the onboarding process.
+ * 
+ * Key Features:
+ * - Displays a series of onboarding screens using a horizontal `ScrollView`, 
+ *   allowing users to swipe through the content.
+ * - Utilizes `react-native-reanimated` for smooth animations and scroll handling.
+ * - Tracks the current index of the onboarding screen using state and shared 
+ *   values, updating the UI accordingly.
+ * - Includes a "Sign In" button that appears on the last onboarding screen, 
+ *   allowing users to navigate to the login screen.
+ * - Implements a paginator to indicate the current position within the onboarding 
+ *   screens.
+ * - Uses `useSafeAreaInsets` to ensure that the layout respects the device's 
+ *   safe area, particularly for devices with notches or rounded corners.
+ * 
+ * Usage:
+ * This component is intended to be used as part of the initial user experience 
+ * in the application, helping users understand the features and benefits of 
+ * the app before signing in or registering.
+ */
 import { SCREEN_WIDTH } from "@eLearning/constant/constant";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";

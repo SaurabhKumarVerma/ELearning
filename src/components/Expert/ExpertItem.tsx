@@ -1,4 +1,34 @@
-import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
+/**
+ * ExpertItem Component
+ * 
+ * This component represents an individual item in the expert selection interface. 
+ * It displays the user's expertise level, associated age range, and an icon 
+ * representing the level. The component is styled to adapt to both light and dark 
+ * themes based on the current theme mode.
+ * 
+ * Props:
+ * - height (number): The height of the component. Defaults to 40% of the screen height.
+ * - width (number): The width of the component. Defaults to 22% of the screen width.
+ * - iconHeight (number): The height of the icon displayed within the component. 
+ *   Defaults to 22% of the screen height.
+ * - iconWidth (number): The width of the icon displayed within the component. 
+ *   Defaults to 22% of the screen width.
+ * - expertLevel (string): The level of expertise (e.g., Beginner, Intermediate, Expert).
+ * - ageRange (string): The age range associated with the expertise level (e.g., "10 - 16").
+ * - style (StyleProp<ViewStyle>): Additional styles to apply to the outer container.
+ * 
+ * Key Features:
+ * - Displays the expertise level and age range in a visually appealing manner.
+ * - Uses the `ELearningText` component for consistent text styling.
+ * - Adapts the background color of the item based on the current theme (light or dark).
+ * - Includes a shadow effect for a raised appearance, enhancing the visual hierarchy.
+ * - Contains an SVG icon representing the expertise level, enhancing the user interface.
+ * 
+ * Usage:
+ * This component is intended to be used within a list or grid of expert items, 
+ * allowing users to select their expertise level in a user-friendly manner.
+ */
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import React from "react";
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from "@eLearning/constant/constant";
 import { color } from "@eLearning/theme/color";

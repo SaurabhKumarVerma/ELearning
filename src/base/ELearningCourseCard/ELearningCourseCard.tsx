@@ -1,3 +1,25 @@
+/**
+ * ELearningCourseCard Component
+ * 
+ * A card component that displays information about an course. This component is designed
+ * to present key details such as the course image, title, author, price, description, and rating,
+ * making it easy for users to browse and select courses.
+ * 
+ * Props:
+ * - @id (string, optional): An optional identifier for the course, useful for navigation or tracking.
+ * - @courseImage (string): The URL or path to the course image to be displayed at the top of the card.
+ * - @title (string): The title of the course, displayed prominently on the card.
+ * - @author (string): The name of the course author or instructor.
+ * - @price (string): The price of the course, displayed at the bottom of the card.
+ * - @courseDescription (string): A brief description of the course content, limited to three lines.
+ * - @courseRating (number): The rating of the course, represented as a number (e.g., 4.5 out of 5).
+ * - @navigateToDetail (function): A callback function that is triggered when the "Details" button is pressed,
+ *   allowing navigation to the course detail page.
+ * 
+ * The component uses the `useTheme` hook from RNEUI to apply theming, ensuring that the card's background
+ * color adapts to the current theme (light or dark). The card also includes dividers for better visual
+ * separation of content.
+ */
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Card, Divider } from "@rneui/base";

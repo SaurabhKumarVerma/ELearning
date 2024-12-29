@@ -1,3 +1,27 @@
+/**
+ * ELearningListingCard Component
+ * 
+ * This component is designed to display a card that showcases an 
+ * course. It presents essential information about the course, including 
+ * the course image, title, author, and price, in a visually appealing 
+ * format using the Card component from RNEUI.
+ * 
+ * Props:
+ * - @courseImage (string): The URL or source of the course image to be displayed.
+ * - @courseTitle (string): The title of the course, which will be shown prominently.
+ * - @author (string): The name of the author or instructor of the course.
+ * - @price (string): The price of the course, which will be displayed to the user.
+ * 
+ * Functionality:
+ * - The component uses a Card layout to encapsulate the course information, 
+ *   providing a clean and organized presentation.
+ * - The course image is rendered using the `ELearningImage` component, which 
+ *   handles image loading and display.
+ * - The course title, author, and price are displayed using the `ELearningText` 
+ *   component, allowing for consistent typography and styling.
+ * - The layout is structured using a flexbox to arrange the image and text 
+ *   side by side, ensuring a responsive design.
+ */
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Card } from "@rneui/themed";

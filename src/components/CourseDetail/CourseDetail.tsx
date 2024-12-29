@@ -1,3 +1,39 @@
+/**
+ * CourseDetail Component
+ * 
+ * This component is designed to display detailed information about a specific 
+ * course. It provides a comprehensive view of 
+ * the course, including the course video, instructor details, duration, 
+ * rating, description, and an option to enroll in the course.
+ * 
+ * Functionality:
+ * - The component utilizes the `useEffect` hook to fetch course details 
+ *   from the `courseStore` when the component mounts, using the course ID 
+ *   passed through the route parameters.
+ * - While the course details are loading, an `ActivityIndicator` is displayed 
+ *   to inform the user that data is being fetched.
+ * - The component displays the course video using the `ELearningVideo` 
+ *   component, which supports fullscreen and picture-in-picture modes.
+ * - It shows the instructor's name, course title, duration, rating, and 
+ *   description using the `ELearningText` component for consistent styling.
+ * - The user can enroll in the course by clicking the "Enroll Course" button, 
+ *   which triggers the `enrolledUser ` function to handle enrollment logic.
+ * - The component also provides a visual indicator (bookmark icon) to show 
+ *   whether the user is already enrolled in the course.
+ * 
+ * Structure:
+ * - **Header**: Displays the course title and an icon for enrollment.
+ * - **Video Section**: Renders the course video with a placeholder image 
+ *   while loading.
+ * - **Course Details**: Displays the instructor's name, course title, 
+ *   duration, rating, and description in a scrollable view.
+ * - **Enroll Button**: A button that allows users to enroll in the course 
+ *   if they are not already enrolled.
+ * 
+ * Usage:
+ * This component can be used in the course detail view ,providing users with all the necessary information to make 
+ * informed decisions about enrolling in a course.
+ */
 import {
     ActivityIndicator,
     Platform,

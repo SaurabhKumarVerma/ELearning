@@ -1,3 +1,21 @@
+/**
+ * Enrolled Component
+ * 
+ * This component displays a list of courses that the user is enrolled in. It utilizes 
+ * React Native's FlatList to render the list of enrolled courses, and it integrates 
+ * MobX for state management to fetch and display the enrolled courses from the store.
+ * 
+ * Key Features:
+ * - Fetches enrolled course data when the component is focused using `useFocusEffect`.
+ * - Displays a header with the title "Enrolled Course".
+ * - Renders each course using the `ELearningListingCard` component, which shows the 
+ *   course image, title, instructor name, and price.
+ * - Provides a touchable interface for each course, allowing users to navigate to 
+ *   the course detail screen when a course is pressed.
+ * - Displays an empty state with an animation and message when there are no enrolled 
+ *   courses.
+ * - Includes a footer component to maintain consistent spacing at the bottom of the list.
+ */
 import {
   FlatList,
   StyleSheet,

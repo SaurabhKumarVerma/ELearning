@@ -1,3 +1,28 @@
+/**
+ * Signup Component
+ * 
+ * This component provides a user interface for signing up new users to the 
+ * application. It includes fields for entering a full name, email address, 
+ * and password, as well as an option to sign up using Google. The component 
+ * also features a header with navigation options and handles user 
+ * authentication through Firebase.
+ * 
+ * Key Features:
+ * - Displays a header with a close button and a "Sign Up" call-to-action.
+ * - Provides input fields for the user to enter their full name, email, 
+ *   and password, with appropriate keyboard settings for email input.
+ * - Includes a "Sign Up" button that currently logs a message to the console 
+ *   (to be replaced with actual sign-up logic).
+ * - Offers an alternative sign-up option using Google, utilizing the 
+ *   `GoogleSignin` library for authentication.
+ * - Displays informative text to guide users through the sign-up process.
+ * - Uses `useSafeAreaInsets` to ensure that the layout respects the device's 
+ *   safe area, particularly for devices with notches or rounded corners.
+ * 
+ * Usage:
+ * This component is intended for use as part of the authentication flow in 
+ * the application, allowing new users to create an account.
+ */
 import { Alert, Appearance, StyleSheet,View } from "react-native";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

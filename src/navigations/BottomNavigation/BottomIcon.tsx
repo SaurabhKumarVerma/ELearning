@@ -1,7 +1,37 @@
 /* eslint-disable react-native/no-inline-styles */
+/**
+ * BottomIcon Component
+ * 
+ * This component represents an icon in the bottom navigation bar of the 
+ * application. It displays an icon and a label corresponding to a specific 
+ * route (e.g., Home or Enrolled) and visually indicates whether the icon 
+ * is currently focused (active) or not.
+ * 
+ * Props:
+ * - isFocused (boolean): Indicates whether the icon is currently focused 
+ *   (active) or not.
+ * - routeName (string): The name of the route associated with this icon 
+ *   (e.g., "Home" or "Enrolled").
+ * - index (number): The index of the icon in the navigation bar (not used 
+ *   in the current implementation).
+ * 
+ * Key Features:
+ * - Uses the `Ionicons` library to display icons based on the route name.
+ * - Dynamically determines the icon name based on whether the icon is 
+ *   focused or not, using a mapping of route names to icon names.
+ * - Adjusts the icon color based on the focus state and the current theme 
+ *   (light or dark mode).
+ * - Utilizes `react-native-reanimated` for potential animations (though 
+ *   currently no specific animations are defined).
+ * - Displays a label next to the icon, which reflects the route name.
+ * 
+ * Usage:
+ * This component is intended to be used within a bottom navigation bar, 
+ * allowing users to navigate between different sections of the application.
+ */
 import { StyleSheet, View } from "react-native"
 
-import Animated, { SlideInUp } from "react-native-reanimated"
+import Animated from "react-native-reanimated"
 import { Ionicons } from "@expo/vector-icons"
 import ELearningText from "@eLearning/base/ELearningText/ELearningText"
 import { ESCREENICON, MODE } from "@eLearning/types/types"

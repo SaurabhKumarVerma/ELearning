@@ -1,4 +1,30 @@
-import { Platform, StyleSheet, View } from "react-native";
+/**
+ * Account Component
+ * 
+ * This component serves as the user account profile screen.It displays the user's profile information, including their 
+ * name and email, and provides a logout button. The layout is responsive 
+ * and adapts to the current theme (light or dark) of the application.
+ * 
+ * Functionality:
+ * - The component utilizes the `useTheme` hook from RNEUI to determine the 
+ *   current theme and adjust the background color of the header accordingly.
+ * - It uses the `useNavigation` hook from React Navigation to handle 
+ *   navigation actions, specifically for logging out the user and redirecting 
+ *   them to the login screen.
+ * - The `onLogout` function resets the navigation stack and navigates the 
+ *   user to the authentication screen, specifically the login screen.
+ * 
+ * Structure:
+ * - The component is structured into several sections:
+ *   - **Header**: Displays the profile header with the title "Profile" 
+ *     and the user's profile information rendered by the `User Profile` 
+ *     component.
+ *   - **Details**: Contains the user's name and email, each displayed with 
+ *     a label and a divider for separation.
+ *   - **Logout Button**: A button that allows the user to log out of their 
+ *     account, which triggers the `onLogout` function when pressed.
+ */
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import ELearningHeader from "@eLearning/base/ELearningHeader/ELearningHeader";
 import { color } from "@eLearning/theme/color";

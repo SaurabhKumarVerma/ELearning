@@ -1,3 +1,28 @@
+/**
+ * GettingStarted Component
+ * 
+ * This component serves as an introductory screen for users, providing a welcoming 
+ * message and guiding them to continue with the application. It features a visually 
+ * appealing layout with text, an icon, and a button to proceed.
+ * 
+ * Key Features:
+ * - Utilizes `ScrollView` to allow for vertical scrolling, accommodating various 
+ *   screen sizes and ensuring that content is accessible even on smaller devices.
+ * - Displays an icon at the top of the screen using the `IconSvg` component.
+ * - Presents two lines of text that convey the message "You learn While Sitting at Home", 
+ *   with styling that adapts to the current theme (light or dark mode).
+ * - Includes a down arrow icon to indicate that there is more content below or to 
+ *   suggest scrolling.
+ * - Provides a circular button labeled "Continue" that allows users to proceed to the 
+ *   next step in the application.
+ * - Uses `useSafeAreaInsets` to ensure that the layout respects the device's safe 
+ *   area, particularly for devices with notches or rounded corners.
+ * 
+ * Usage:
+ * This component is intended to be used as part of the onboarding process or as an 
+ * introductory screen for new users, helping them understand the application's 
+ * purpose and encouraging them to continue.
+ */
 import { ScrollView, StyleSheet, View } from "react-native";
 import React from "react";
 import IconSvg from "./IconSvg";

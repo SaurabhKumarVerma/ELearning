@@ -1,7 +1,32 @@
+/**
+ * Login Component
+ * 
+ * This component provides a user interface for logging into the application. 
+ * It includes fields for email and password input, as well as an option to 
+ * sign in using Google. The component also features a header with navigation 
+ * options and handles user authentication through Firebase.
+ * 
+ * Key Features:
+ * - Displays a header with a "Sign Up" call-to-action and a close button 
+ *   that prompts a confirmation alert when pressed.
+ * - Provides input fields for the user to enter their email and password, 
+ *   with appropriate keyboard settings for email input.
+ * - Includes a "Forgot Password?" link that allows users to recover their 
+ *   password.
+ * - Features a "Sign In" button that triggers a console log (to be replaced 
+ *   with actual sign-in logic).
+ * - Offers an alternative sign-in option using Google, utilizing the 
+ *   `GoogleSignin` library for authentication.
+ * - Displays informative text to guide users through the login process.
+ * - Uses `useSafeAreaInsets` to ensure that the layout respects the device's 
+ *   safe area, particularly for devices with notches or rounded corners.
+ * 
+ * Usage:
+ * This component is intended for use as part of the authentication flow in 
+ * the application, allowing users to log in to their accounts.
+ */
 import {
     Alert,
-    Appearance,
-    ScrollView,
     StyleSheet,
     TouchableOpacity,
     View,
@@ -10,7 +35,6 @@ import React from "react";
 import ELearningAuthHeader from "@eLearning/base/ELearningAuthHeader/ELearningAuthHeader";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ELearningText from "@eLearning/base/ELearningText/ELearningText";
-import { MODE } from "@eLearning/types/types";
 import ELearningTextInput from "@eLearning/base/ELearningTextInput/ELearningTextInput";
 import { color } from "@eLearning/theme/color";
 import ELearningLoadingButton from "@eLearning/base/ELearningButton/ELearningButton";
@@ -19,7 +43,6 @@ import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useNavigation } from "@react-navigation/native";
 import { ESCREEN } from "@eLearning/types/screenName";
-import { navigationRef, replace } from "@eLearning/navigations/Rootnavigation";
 
 const Login = () => {
     const inset = useSafeAreaInsets();

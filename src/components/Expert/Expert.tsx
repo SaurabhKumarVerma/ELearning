@@ -1,3 +1,29 @@
+/**
+ * Expert Component
+ * 
+ * This component allows users to select their expertise level in a specific domain. 
+ * It presents a list of expert levels (Beginner, Intermediate, Expert) along with 
+ * corresponding age ranges. The user can choose their level and proceed to the next 
+ * step in the application.
+ * 
+ * Key Features:
+ * - Utilizes `ScrollView` to allow vertical scrolling of content, accommodating 
+ *   various screen sizes.
+ * - Displays a header with a toggle for dark mode using `ELearningAuthHeader`.
+ * - Renders a list of expert items using the `ExpertItem` component, which visually 
+ *   represents different expertise levels and their associated age ranges.
+ * - Each expert item is dynamically positioned based on its index, providing a 
+ *   staggered layout.
+ * - Includes a bottom container with two circular buttons: one for skipping the 
+ *   selection and another for continuing to the next step.
+ * - Uses `useSafeAreaInsets` to ensure that the layout respects the device's safe 
+ *   area, particularly for devices with notches or rounded corners.
+ * 
+ * Usage:
+ * This component is intended for use in an onboarding or selection process where 
+ * users need to specify their expertise level before proceeding further in the 
+ * application.
+ */
 import { Appearance, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

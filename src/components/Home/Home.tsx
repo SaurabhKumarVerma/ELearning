@@ -1,3 +1,30 @@
+/**
+ * Home Component
+ * 
+ * This component serves as the main screen for displaying a list of courses 
+ * available to the user. It utilizes a FlatList to render course cards, 
+ * allowing users to navigate to detailed views of each course. The component 
+ * integrates MobX for state management and handles loading states and empty 
+ * data scenarios gracefully.
+ * 
+ * Key Features:
+ * - Displays a header with the title "Home" and a user account icon for 
+ *   navigation to the account screen.
+ * - Fetches the list of courses from the store when the component mounts using 
+ *   the `useEffect` hook.
+ * - Renders each course using the `ELearningCourseCard` component, which 
+ *   displays course details such as image, title, author, price, description, 
+ *   and rating.
+ * - Provides a loading indicator while the course data is being fetched.
+ * - Displays a message when no courses are available.
+ * - Includes a footer component to maintain consistent spacing at the bottom 
+ *   of the list.
+ * 
+ * Usage:
+ * This component is intended to be used as the main entry point for users to 
+ * explore available courses in the application. It allows users to select a 
+ * course to view more details.
+ */
 import { ActivityIndicator, FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import React, { useEffect } from "react";
 import { Avatar, useTheme } from "@rneui/themed";

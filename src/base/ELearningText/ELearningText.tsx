@@ -1,3 +1,34 @@
+/**
+ * ELearningText Component
+ * 
+ * This component is designed to render text with customizable styles, 
+ * presets, and font weights. It leverages the `Text` component from 
+ * RNEUI to provide a consistent and flexible way to display text 
+ * throughout an e-learning application.
+ * 
+ * Props:
+ * - @text (string | number): The content to be displayed. It can be a string 
+ *   or a number.
+ * - @preset (Preset, optional): A predefined style for the text, allowing 
+ *   for consistent typography across the application. Available presets 
+ *   include 'heading', 'subheading', 'body', 'thin', 'light', 'regular', 
+ *   'medium', 'semiBold', 'bold', and 'black'. Defaults to 'body'.
+ * - @size (number, optional): A custom font size for the text. If not provided, 
+ *   the size from the selected preset will be used.
+ * - @weight (keyof typeof FONT_FAMILY_MAP, optional): A specific font weight 
+ *   to be applied to the text. If provided, it overrides the weight from 
+ *   the selected preset.
+ * - @style (StyleProp<TextStyle>, optional): Additional styles to be applied 
+ *   to the text. This allows for further customization beyond the preset styles.
+ * 
+ * Functionality:
+ * - The component creates a set of text presets with predefined styles, 
+ *   including font size, weight, and family, based on the Poppins font.
+ * - It combines the selected preset style with any custom size, weight, 
+ *   or additional styles provided through props.
+ * - The final combined style is applied to the `Text` component, ensuring 
+ *   that the text is rendered with the desired appearance.
+ */
 import React from 'react';
 import { StyleProp, TextStyle } from 'react-native';
 import { Text, TextProps } from '@rneui/themed';

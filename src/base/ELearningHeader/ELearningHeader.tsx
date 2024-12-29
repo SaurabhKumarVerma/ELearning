@@ -1,11 +1,25 @@
+/**
+ * ELearningHeader Component
+ * 
+ * This component serves as a customizable header.
+ * It provides a consistent layout for displaying a title, optional navigation 
+ * icons, and additional elements on the right side of the header.
+ * 
+ * Props:
+ * - @headerText (string, optional): The text to be displayed as the header title.
+ * - @headerContainerStyle (StyleProp<ViewStyle>, optional): Custom styles to be applied to the header container.
+ * - @rightIcon (React.ReactElement, optional): A React element to be displayed on the right side of the header.
+ * - @textPreset (Preset, optional): Preset style for the header text, allowing for consistent typography.
+ * - @textSize (number, optional): Custom font size for the header text.
+ * - @textStyle (StyleProp<TextStyle>, optional): Additional styles to be applied to the header text.
+ * - @showLeftIcon (boolean, optional): Determines whether to show the back navigation icon on the left. Defaults to true.
+ */
 import {
     Pressable,
     StyleProp,
     StyleSheet,
-    Text,
     TextStyle,
     View,
-    ViewProps,
 } from "react-native";
 import React from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";

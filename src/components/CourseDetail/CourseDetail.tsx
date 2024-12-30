@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         marginHorizontal: 12,
-        marginBottom: Platform.OS === "ios" ? "4%" : "10%",
+        marginBottom: "4%",
         backgroundColor: "transparent",
         overflowX: "hidden",
         borderRadius: 24,

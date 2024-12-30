@@ -38,4 +38,11 @@ export class EnrolledStore implements IErolled {
   removeEnrolledCourse: () => void;
   showEnrolledModel: () => void;
 
+  @action
+    clearStore() {
+        this.isEnrolled = false;
+        this.enrolledList.clear();
+        this.enrolledListData = [];
+    }
+
 }

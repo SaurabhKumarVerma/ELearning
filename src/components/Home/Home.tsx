@@ -53,7 +53,7 @@ const Home = () => {
   const { courseStore } = useStore();
 
   useEffect(() => {
-    courseStore.getCourseList();
+    courseStore.initializeCourses();
   }, []);
 
   const renderItem = ({ item }: { item: ICourse }) => {

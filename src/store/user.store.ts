@@ -4,7 +4,7 @@ import { IUserModel } from "@eLearning/models/user.model";
 import { ESCREEN } from "@eLearning/types/screenName";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import auth from '@react-native-firebase/auth';
-import { replace } from "@eLearning/navigations/Rootnavigation";
+import { navigationRef, replace } from "@eLearning/navigations/Rootnavigation";
 import { getBooleanItem } from "@eLearning/service/storageService/storage.service";
 
 export class UserStore implements IUserModel {
@@ -96,4 +96,26 @@ export class UserStore implements IUserModel {
     };
 
     onSignup: () => void;
+
+    @action
+    logout() {
+        this.userId = undefined;
+        this.userName = undefined;
+        this.userEmail = undefined;
+        this.password = undefined;
+        this.userImage = undefined;
+        this.isLoginErrorStatus = false;
+        this.isLoading = false;
+
+        // Clear dependent stores
+        this.rootStore.enrolledStore.clearStore();
+        this.rootStore.courseStore.clearStore();
+
+        navigationRef.reset({
+                    index: 0,
+                    routes: [{ name: ESCREEN.AUTHENTICATION_SCREEN,  params:{
+                        screen: ESCREEN.LOGIN_SCREEN,
+                    }}],
+                });
+    }
 }

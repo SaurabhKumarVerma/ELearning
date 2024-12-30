@@ -22,10 +22,9 @@ export class CourseStore implements ICourseService {
   constructor(rootStore:  typeof RootStore) {
     makeObservable(this); // Make the store observable
     this.rootStore = rootStore; // Assign the root store reference
-    this.addToList() // Initialize course detail data
   }
   @action
-  private addToList(){
+ addToList(){
     // Maps initial data to course detail data
     this.courseDetailData = data?.map((item,index) => {
       return {
@@ -34,6 +33,12 @@ export class CourseStore implements ICourseService {
       }
     })
   }
+
+  @action
+    initializeCourses = async () => {
+       this.addToList()
+        await this.getCourseList(); // Re-fetch courses on login
+    }
 
   @action
   closedRatingModel = () => {
@@ -55,7 +60,7 @@ export class CourseStore implements ICourseService {
   }
 
   @action
-  getCourseList(){
+  async getCourseList(){
      // Fetches the list of courses.
     // It first sets the loading state to true, then assigns the courseDetailData to courseList,
     // and finally sets the loading state to false to indicate loading is complete.
@@ -98,5 +103,13 @@ export class CourseStore implements ICourseService {
     if (this.courseDetailData[0]) {
       this.courseDetailData[0].isCourseEnrolled = true;
     }
+  }
+
+  @action
+  clearStore() {
+      this.courseList = undefined;
+      this.isLoading = false;
+      this.courseDetailData = [];
+      this.isCourseDetailLoading = false;
   }
 }

@@ -48,12 +48,13 @@ const Account = () => {
         theme.mode === MODE.DARK ? color.darkForestGreen : color.forestGreen;
 
     const onLogout = () => {
-        navigation.reset({
-            index: 0,
-            routes: [{ name: ESCREEN.AUTHENTICATION_SCREEN,  params:{
-                screen: ESCREEN.LOGIN_SCREEN,
-            }}],
-        });
+        userStore.logout()
+        // navigation.reset({
+        //     index: 0,
+        //     routes: [{ name: ESCREEN.AUTHENTICATION_SCREEN,  params:{
+        //         screen: ESCREEN.LOGIN_SCREEN,
+        //     }}],
+        // });
     };
 
     return (
@@ -87,7 +88,7 @@ const Account = () => {
             <View style={styles.buttonWrapper}>
                 <ELearningLoadingButton
                     isLoading={false}
-                    handlePress={onLogout}
+                    handlePress={() => onLogout()}
                     label="Logout"
                     icon={
                         <Feather

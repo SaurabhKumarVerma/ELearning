@@ -61,8 +61,6 @@ PODS:
     - ExpoModulesCore
   - ExpoSystemUI (4.0.6):
     - ExpoModulesCore
-  - ExpoVideo (2.0.3):
-    - ExpoModulesCore
   - FBLazyVector (0.76.5)
   - Firebase/Auth (11.5.0):
     - Firebase/CoreOnly
@@ -1406,6 +1404,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - react-native-orientation-locker (1.7.0):
+    - React-Core
   - react-native-safe-area-context (4.12.0):
     - DoubleConversion
     - glog
@@ -1464,6 +1464,71 @@ PODS:
     - React-graphics
     - React-ImageManager
     - react-native-safe-area-context/common
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - react-native-video (6.8.2):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - react-native-video/Video (= 6.8.2)
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - react-native-video/Fabric (6.8.2):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - react-native-video/Video (6.8.2):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - react-native-video/Fabric
     - React-NativeModulesApple
     - React-RCTFabric
     - React-rendererdebug
@@ -1992,7 +2057,6 @@ DEPENDENCIES:
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - ExpoSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - ExpoSystemUI (from `../node_modules/expo-system-ui/ios`)
-  - ExpoVideo (from `../node_modules/expo-video/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - fmt (from `../node_modules/react-native/third-party-podspecs/fmt.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -2030,7 +2094,9 @@ DEPENDENCIES:
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
   - react-native-mmkv (from `../node_modules/react-native-mmkv`)
+  - react-native-orientation-locker (from `../node_modules/react-native-orientation-locker`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-video (from `../node_modules/react-native-video`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -2121,8 +2187,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-splash-screen/ios"
   ExpoSystemUI:
     :path: "../node_modules/expo-system-ui/ios"
-  ExpoVideo:
-    :path: "../node_modules/expo-video/ios"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   fmt:
@@ -2194,8 +2258,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
   react-native-mmkv:
     :path: "../node_modules/react-native-mmkv"
+  react-native-orientation-locker:
+    :path: "../node_modules/react-native-orientation-locker"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-video:
+    :path: "../node_modules/react-native-video"
   React-nativeconfig:
     :path: "../node_modules/react-native/ReactCommon"
   React-NativeModulesApple:
@@ -2284,7 +2352,6 @@ SPEC CHECKSUMS:
   ExpoModulesCore: 755e9c03bfe099eae7833d8f8b56118b2fc1107f
   ExpoSplashScreen: 5818efe67bdbcc862b97fef589571c5b4d53fa7d
   ExpoSystemUI: 2d729aea8219f03af1b1996c1d14488a01fea94a
-  ExpoVideo: d630401195169343272d9d48800e0b38d9c39974
   FBLazyVector: 1bf99bb46c6af9a2712592e707347315f23947aa
   Firebase: 7a56fe4f56b5ab81b86a6822f5b8f909ae6fc7e2
   FirebaseAppCheckInterop: 347aa09a805219a31249b58fc956888e9fcb314b
@@ -2334,7 +2401,9 @@ SPEC CHECKSUMS:
   React-Mapbuffer: c79216258c659d70cdebaf76f8c110cc46dce8db
   React-microtasksnativemodule: 8d918db5d7c4526de2a0a4692d878a21b338c3f0
   react-native-mmkv: 35992c4170a4a46be095fd1b7fe17d2fd1d42124
+  react-native-orientation-locker: 5819fd23ca89cbac0d736fb4314745f62716d517
   react-native-safe-area-context: 908ee3cf872b29ed987a0514f1a6ccbf57f0fef4
+  react-native-video: 07ebee84a1b3a3ad9d2e6ba182eb5788eaf5a509
   React-nativeconfig: 565ebf4340d9ede95b523f0e3640f48286985ef5
   React-NativeModulesApple: ea083a4663dae82c99fe4c2186b11504ac4147e1
   React-perflogger: ceb97dd4e5ca6ff20eebb5a6f9e00312dcdea872

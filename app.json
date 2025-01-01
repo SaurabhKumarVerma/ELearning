@@ -47,13 +47,6 @@
             "useFrameworks": "static"
           }
         }
-      ],
-      [
-        "expo-video",
-        {
-          "supportsBackgroundPlayback": true,
-          "supportsPictureInPicture": true
-        }
       ]
     ]
   }

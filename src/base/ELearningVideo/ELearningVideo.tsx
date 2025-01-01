@@ -1,111 +1,87 @@
 /**
  * ELearningVideo Component
  * 
- * This component is designed to render a video player. It utilizes the `expo-video` library to provide a 
- * customizable video playback experience, including support for 
- * fullscreen mode and picture-in-picture functionality.
+ * This component is designed to render a video player in a React Native application. It supports
+ * full-screen mode when the device orientation changes to landscape and reverts to portrait mode
+ * when the video ends or the orientation changes back to portrait.
  * 
- * Props:
- * - videoUrl (string): The URL of the video to be played.
- * - style (StyleProp<ViewStyle>, optional): Custom styles to be applied 
- *   to the video player.
- * - isFullscreen (boolean, optional): A flag indicating whether the video 
- *   player should support fullscreen mode. Defaults to true.
- * - allowsPictureInPicture (boolean, optional): A flag indicating whether 
- *   picture-in-picture mode is allowed. Defaults to true.
- * - imageUrl (string): The URL of the image to be displayed as a 
- *   placeholder while the video is loading.
- * - onFullScreenExit (function, optional): A callback function that is 
- *   called when the video exits fullscreen mode.
- * 
- * Functionality:
- * - The component uses the `useVideoPlayer` hook to manage video playback, 
- *   including play, pause, and notification settings.
- * - It displays a preview image while the video is loading, using the 
- *   `ImageBackground` component from `expo-image` along with an 
- *   `ActivityIndicator` to indicate loading status.
- * - The component listens for status changes in the video player to 
- *   determine when to show or hide the preview image.
- * - When the video playback reaches the end, it automatically exits 
- *   fullscreen mode and triggers the `onFullScreenExit` callback if provided.
+ * Features:
+ * - Plays a video from a provided URL.
+ * - Automatically adjusts to full-screen mode when the device is rotated to landscape.
+ * - Exits full-screen mode when the device is rotated back to portrait or when the video ends.
+ * - Provides controls for play, pause, seek, and volume adjustment.
+ * - Uses `react-native-video` for video playback and `react-native-orientation-locker` for orientation handling.
  */
 import {
-  ActivityIndicator,
-  StyleProp,
   StyleSheet,
-  ViewStyle,
+  useWindowDimensions,
+  View,
 } from "react-native";
-import React, { useRef, useState } from "react";
-import { useEvent, useEventListener } from "expo";
-import { useVideoPlayer, VideoView } from "expo-video";
+import React, { useEffect, useRef, useState } from "react";
 import { SCREEN_WIDTH } from "@eLearning/constant/constant";
-import { EVIDEOPLAYERSTATUS } from "@eLearning/types/types";
-import { ImageBackground } from "expo-image";
+import Orientation, { OrientationType } from "react-native-orientation-locker";
+import Video, { OnLoadData, VideoRef } from "react-native-video";
 
 interface IELearningVideo {
   videoUrl: string;
-  style?: StyleProp<ViewStyle>;
-  isFullscreen?: boolean;
-  allowsPictureInPicture?: boolean;
-  imageUrl: string;
+  style
   onFullScreenExit?: () => void
 }
 
 const ELearningVideo = ({
   videoUrl,
   style,
-  isFullscreen = true,
-  allowsPictureInPicture = true,
-  imageUrl,
-  onFullScreenExit
+  onFullScreenExit,
 }: IELearningVideo) => {
-  const ref = useRef<VideoView>(null);
-  const [showPreviewImage, setShowPreviewImage] = useState<boolean>(true);
+  const [fullScreen, setFullScreen] = useState<boolean>(false);
+  const videoRef = useRef<VideoRef>(null);
+  const { height } = useWindowDimensions();
 
-  const player = useVideoPlayer(videoUrl, (player) => {
-    player.loop = false;
-    player.pause();
-    player.showNowPlayingNotification = true;
-    
-  });
+  useEffect(() => {
+    const unsubscribe = Orientation.addOrientationListener(handleOrientation);
+    return () => {
+      unsubscribe;
+      setFullScreen(false);
+      Orientation.lockToPortrait();
+    };
+  }, []);
 
-  const { isPlaying } = useEvent(player, "playingChange", {
-    isPlaying: player.playing,
-  });
-
-
-  useEventListener(player, "statusChange", ({ status, error }) => {
-    if (status === EVIDEOPLAYERSTATUS.LOADING) {
-      setShowPreviewImage(true);
+  const handleOrientation = (orientation: OrientationType) => {
+    if (
+      orientation === OrientationType["LANDSCAPE-RIGHT"] ||
+      orientation === OrientationType["LANDSCAPE-LEFT"]
+    ) {
+      setFullScreen(true);
     } else {
-      setShowPreviewImage(false);
+      setFullScreen(false);
     }
-  });
-  
-  if (player.currentTime === player.duration && player.currentTime) {
-    ref?.current?.exitFullscreen();
+  };
+
+  const handleOnEnd = () => {
     onFullScreenExit()
+  };
+
+  const onLoadVideo = (video:OnLoadData) => {
+    videoRef.current.seek(0)
   }
 
+  
   return (
     <>
-      {showPreviewImage && player.duration === 0 ? (
-        <ImageBackground
-          source={imageUrl}
-          style={[{ ...styles.video }, styles.loadingIndictor]}
-        >
-          <ActivityIndicator size={"small"} />
-        </ImageBackground>
-      ) : (
-        <><VideoView
-            ref={ref}
-            style={style ?? styles.video}
-            player={player}
-            allowsFullscreen={isFullscreen}
-            allowsPictureInPicture={allowsPictureInPicture}
-            startsPictureInPictureAutomatically />
-          </>
-      )}
+       <View>
+
+       <Video
+          ref={videoRef}
+          source={{ uri: videoUrl }}
+          style={[styles.video, { height: fullScreen ? height : 300 }]}
+          controls
+          fullscreen={fullScreen}
+          onLoad={(data) => onLoadVideo(data)}
+          onEnd={handleOnEnd}
+        />
+        
+      </View>
+
     </>
   );
 };
